@@ -6,7 +6,6 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="java" />
         <module name="mybaits" />
         <module name="redis" />
         <module name="springboot-mongodb" />
@@ -15,8 +14,8 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="java" target="1.8" />
-      <module name="mybaits" target="1.8" />
+      <module name="java" target="1.5" />
+      <module name="mybaits" target="1.5" />
       <module name="springboot" target="1.8" />
       <module name="springboot-mongodb" target="1.8" />
       <module name="springboot-rabbitmq" target="1.8" />

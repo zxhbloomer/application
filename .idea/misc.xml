@@ -7,7 +7,6 @@
         <option value="$PROJECT_DIR$/springboot/redis/pom.xml" />
         <option value="$PROJECT_DIR$/springboot/springboot-redis/pom.xml" />
         <option value="$PROJECT_DIR$/springboot/springboot-rabbitmq/pom.xml" />
-        <option value="$PROJECT_DIR$/java/pom.xml" />
         <option value="$PROJECT_DIR$/springcloud/pom.xml" />
         <option value="$PROJECT_DIR$/mybaits/pom.xml" />
       </list>

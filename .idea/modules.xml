@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Applications.iml" filepath="$PROJECT_DIR$/.idea/Applications.iml" />
-      <module fileurl="file://$PROJECT_DIR$/java/java.iml" filepath="$PROJECT_DIR$/java/java.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybaits/mybaits.iml" filepath="$PROJECT_DIR$/mybaits/mybaits.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot/springboot.iml" filepath="$PROJECT_DIR$/springboot/springboot.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot/springboot-mongodb/springboot-mongodb.iml" filepath="$PROJECT_DIR$/springboot/springboot-mongodb/springboot-mongodb.iml" />
