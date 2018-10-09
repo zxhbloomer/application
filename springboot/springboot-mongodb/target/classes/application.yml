@@ -1,0 +1,6 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: local #指定操作的数据库
