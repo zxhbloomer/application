@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8e66c75e-6bde-441b-8812-ed25223ef22e" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/springcloud/src/main/java/com/main/SpringcloudApplication.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/springcloud/src/main/resources/application.properties" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/springcloud/src/test/java/com/main/SpringcloudApplicationTests.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/java/pom.xml" afterPath="$PROJECT_DIR$/java/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/springboot/springboot-rabbitmq/src/main/resources/application.yml" afterPath="$PROJECT_DIR$/springboot/springboot-rabbitmq/src/main/resources/application.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/springboot/springboot-rabbitmq/target/classes/application.yml" afterPath="$PROJECT_DIR$/springboot/springboot-rabbitmq/target/classes/application.yml" />
-    </list>
+    <list default="true" id="8e66c75e-6bde-441b-8812-ed25223ef22e" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/springboot-mybaits/target/" />
     <ignored path="$PROJECT_DIR$/springboot-mybaits/springboot-mybatis-tkmapper/target/" />
     <ignored path="$PROJECT_DIR$/springboot/target/" />
@@ -174,11 +167,6 @@
             <path>
               <item name="Applications" type="b2602c69:ProjectViewProjectNode" />
               <item name="Applications" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Applications" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Applications" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Applications" type="b2602c69:ProjectViewProjectNode" />
@@ -435,7 +423,7 @@
       <workItem from="1538106073707" duration="24000" />
       <workItem from="1538184899808" duration="25446000" />
       <workItem from="1539047605420" duration="535000" />
-      <workItem from="1539048195183" duration="15816000" />
+      <workItem from="1539048195183" duration="15887000" />
     </task>
     <servers />
   </component>
@@ -472,7 +460,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43823000" />
+    <option name="totallyTimeSpent" value="43894000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
