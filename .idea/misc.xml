@@ -9,6 +9,11 @@
         <option value="$PROJECT_DIR$/springboot/springboot-rabbitmq/pom.xml" />
         <option value="$PROJECT_DIR$/springcloud/pom.xml" />
         <option value="$PROJECT_DIR$/mybaits/pom.xml" />
+        <option value="$PROJECT_DIR$/java/pom.xml" />
+        <option value="$PROJECT_DIR$/java/common/pom.xml" />
+        <option value="$PROJECT_DIR$/java/demo-array-sort/pom.xml" />
+        <option value="$PROJECT_DIR$/java/demo-function-interface/pom.xml" />
+        <option value="$PROJECT_DIR$/springboot/docker-simple/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">

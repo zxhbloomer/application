@@ -1,12 +1,12 @@
-package com.main;
+package com.example;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringcloudApplication {
+public class DockerSimpleApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringcloudApplication.class, args);
+		SpringApplication.run(DockerSimpleApplication.class, args);
 	}
 }

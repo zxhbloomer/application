@@ -6,7 +6,36 @@
 
     <groupId>com.jack.java</groupId>
     <artifactId>java</artifactId>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
+    <modules>
+        <module>common</module>
+        <module>demo-array-sort</module>
+        <module>demo-function-interface</module>
+    </modules>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.2</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <!--Java版本设置-->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

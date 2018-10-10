@@ -3,6 +3,11 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/Applications.iml" filepath="$PROJECT_DIR$/.idea/Applications.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java/common/common.iml" filepath="$PROJECT_DIR$/java/common/common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java/demo-array-sort/demo-array-sort.iml" filepath="$PROJECT_DIR$/java/demo-array-sort/demo-array-sort.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java/demo-function-interface/demo-function-interface.iml" filepath="$PROJECT_DIR$/java/demo-function-interface/demo-function-interface.iml" />
+      <module fileurl="file://$PROJECT_DIR$/springboot/docker-simple/docker-simple.iml" filepath="$PROJECT_DIR$/springboot/docker-simple/docker-simple.iml" />
+      <module fileurl="file://$PROJECT_DIR$/java/java.iml" filepath="$PROJECT_DIR$/java/java.iml" />
       <module fileurl="file://$PROJECT_DIR$/mybaits/mybaits.iml" filepath="$PROJECT_DIR$/mybaits/mybaits.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot/springboot.iml" filepath="$PROJECT_DIR$/springboot/springboot.iml" />
       <module fileurl="file://$PROJECT_DIR$/springboot/springboot-mongodb/springboot-mongodb.iml" filepath="$PROJECT_DIR$/springboot/springboot-mongodb/springboot-mongodb.iml" />
