@@ -1,0 +1,52 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://admin:123@server1:9100/eureka/
+server:
+  port: 9501
+spring:
+  application:
+    name: service-route-gateway
+  rabbitmq: #Config刷新总线BUS需要连接RabbitMQ
+    host: 192.168.31.55
+    port: 5672
+    username: demo
+    password: 123456
+  boot:
+    admin:
+      client:
+        url: http://localhost:9400 #Admin
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true #是否与服务发现组件进行结合
+      routes:
+        - id: serviceRoute03
+          uri: lb://service-client-consumer # http请求为lb://前缀+服务id;ws请求为lb:ws://前缀+服务id；表示将请求负载到哪一个服务上(EurekaServer里面的那个ApplicationName)我这里将这个请求路由到了EUREKA-CLIENT-CONSUMER1
+          order: 0                          #这个路由的执行order,(重复的匹配规则的时候哪个先,相当于顺序)
+          predicates:                      #路由的规则(数组)
+            - Path=/service/manage/**         #路由的规则(注意中间的customer001) = http://localhost:9006/customer/ = localhost:9003/
+          filters:                         #请求转发前的filter，为一个数组(执行过滤器)
+            - StripPrefix=2                 #StripPrefix可以接受一个非负整数,表示去掉多少层前缀,我们访问网关的URL = /customer/hello/ ,去除前缀后微服务接收到的是/hello/路径(我们这里必须加上)
+            - AddResponseHeader=X-Response-Default-Foo, Default-Bar #设置Response响应头的参数
+            - name: Hystrix   #路由熔断器的处理
+              args:
+                name: myCommandName #起一个名字,即HystrixCommand的名字
+                fallbackUri: forward:/fallback  #即 fallback 对应的 uri，这里的 uri 仅支持forward: schemed 的
+feign:
+  hystrix:
+    enabled: true #使熔断器接口方法实现方式起作用
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #2.0版本server或client必须加上此配置(开放所有端点),不然无法通过这个bus-refresh刷新
+#Hystrix 配置参数，目前只能全局配置，例如说 Hystrix 执行超时时间，配置如下 ：
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000

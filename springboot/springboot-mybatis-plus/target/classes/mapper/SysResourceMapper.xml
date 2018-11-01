@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.main.mapper.SysResourceMapper">
+
+    <sql id="base_column_list">
+       id,status,enabled,create_time as createTime,create_user_name as createUserName,update_time as updateTime,update_user_name as updateUserName,
+       order_no as orderNo,
+       resource_level as resourceLevel,
+       resource_parent as resourceParent,
+       resource_name as resourceName,
+       resource_desc as resourceDesc,
+       resource_path as resourcePath,
+       resource_icon as resourceIcon
+    </sql>
+
+    <sql id="table_name">
+        sys_resource
+    </sql>
+
+    <select id="selectAll" resultType="SysResource">
+        select <include refid="base_column_list"/> from <include refid="table_name"/>
+    </select>
+
+</mapper>

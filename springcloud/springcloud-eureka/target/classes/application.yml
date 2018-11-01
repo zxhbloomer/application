@@ -1,0 +1,23 @@
+#单个EurekaServer配置
+server:
+  port: 9100
+spring:
+  security:
+    user:
+      name: admin       #登录账号
+      password: 123 #登录密码
+  application:
+    name: eureka-server-single
+#  profiles:
+#    active: server3 #使用profiles指定配置文件有时候会不行
+eureka:
+  instance:
+    hostname: localhost #这里使用localhost如果需要使用其他的配置需要在host文件更改映射
+  client:
+    register-with-eureka: false #不向自己进行注册
+    fetch-registry: false #获取其他实例的信息
+    serviceUrl:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@${eureka.instance.hostname}:${server.port}/eureka/
+#logging:
+#  level:
+#    org.springframework: DEBUG #开启springframework的debug输出级别

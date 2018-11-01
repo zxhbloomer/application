@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class RabbitConfig {
 
-    public static final String JACK_QUEUE = "simple-test";
+    public static final String JACK_QUEUE = "simple-demo";
 
     @Bean
     public Queue queue(){

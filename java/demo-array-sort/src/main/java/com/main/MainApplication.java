@@ -8,7 +8,7 @@ public class MainApplication {
 		ArrayList<Person> list = new ArrayList<>();
 
 		list.add(new Person("jack","123",11));
-		list.add(new Person("test","789",3));
+		list.add(new Person("demo","789",3));
 		list.add(new Person("wait","965",145));
 		list.add(new Person("ack","665",11));
 		list.add(new Person("success","11",5));

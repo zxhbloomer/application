@@ -1,0 +1,8 @@
+-------------------------------------------------------------------------------
+Test set: com.mian.MainApplicationTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 6.663 s <<< FAILURE! - in com.mian.MainApplicationTest
+test05(com.mian.MainApplicationTest)  Time elapsed: 0.007 s  <<< ERROR!
+java.lang.IllegalArgumentException: Object must not be null!
+	at com.mian.MainApplicationTest.test05(MainApplicationTest.java:54)
+

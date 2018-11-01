@@ -1,0 +1,14 @@
+server:
+  port: 11000
+spring:
+  application:
+    name: springboot-admin-client
+  boot:
+    admin:
+      client:
+        url: http://localhost:12000
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*" #开发所有的端点(注意*号是String类型)

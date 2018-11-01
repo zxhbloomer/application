@@ -1,0 +1,3 @@
+com\main\MainApplication.class
+com\main\config\RedisCacheAutoConfiguration.class
+com\main\entity\User.class

@@ -1,0 +1,19 @@
+spring:
+  cloud:
+    config:
+      label: master
+      uri: http://localhost:9200  #ConfigServer地址
+      name: config-client-dev    #方式1:通过name指定文件(yml和properties都可以读取到)
+  zipkin:
+    base-url: http://192.168.31.29:9411/  #注意在新版本必须把Lookback设置为Custom!!!
+    sender:
+      type: web #把数据发送到WEB端
+    locator:
+      discovery:
+        enabled: true # 支持通过服务发现来定位host name：
+  sleuth:
+    web:
+      client:
+        enabled: true #链路配置
+    sampler:
+      probability: 1.0  # 将采样比例设置为 1.0，也就是全部都需要。默认是 0.1

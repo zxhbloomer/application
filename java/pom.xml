@@ -13,6 +13,8 @@
         <module>common</module>
         <module>demo-array-sort</module>
         <module>demo-function-interface</module>
+        <module>demo-httpclient</module>
+        <module>util-encrypt-rsa</module>
     </modules>
 
     <dependencies>
