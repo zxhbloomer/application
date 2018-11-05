@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.main.demo.util.ConvertWrapperUtil;
 import com.main.demo.vqo.SysResourceVqo;
+import com.main.entity.SysResource;
 import com.main.mapper.SysResourceMapper;
 import com.main.mapper.SysRoleMapper;
 import com.main.service.*;
@@ -13,6 +14,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
 
@@ -50,7 +52,6 @@ public class MainApplicationTest {
 
 		resourceService.listByExample(ConvertWrapperUtil.convert(vqo));
 	}
-
 
 
 }

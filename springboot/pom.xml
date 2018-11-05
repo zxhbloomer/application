@@ -18,7 +18,7 @@
 		<module>springboot-logfilter-start</module>
         <module>springboot-admin-server</module>
 		<module>springboot-admin-client</module>
-	</modules>
+    </modules>
 
 	<packaging>pom</packaging>
 

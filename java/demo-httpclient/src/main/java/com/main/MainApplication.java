@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
 public class MainApplication {
 
 	private static Integer SUM = 0 ;
-	private static final String ADDRESS = "http://localhost:9301/personOne";
+	private static final String ADDRESS = "http://localhost:9501/service/indent/order/receiverGoods?goodsName=iPhone&token=123456789";
 
 	public static void main(String[] args) throws Exception{
 		ExecutorService exec = Executors.newFixedThreadPool(20);

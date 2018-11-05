@@ -17,12 +17,6 @@ public class DockerSimpleApplication {
 
 	@RequestMapping("/index")
 	public String index(){
-		StringBuilder sb = new StringBuilder();
-
-		for(int i=0;i<10000;i++){
-			sb.append(Math.abs(new Random().nextLong()) + "\n\r");
-		}
-
-		return sb.toString();
+		return "Hello";
 	}
 }
