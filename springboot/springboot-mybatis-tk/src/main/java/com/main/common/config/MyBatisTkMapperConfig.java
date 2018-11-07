@@ -4,7 +4,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@MapperScan("com.main.mapper") //注意这里引入的是TK的MapperScan,以及不要加 .* (mapper或者mapper*)
+//@MapperScan("com.main.mapper") //单数据源,注意是tk包下的MapperScan
 public class MyBatisTkMapperConfig {
 
 }

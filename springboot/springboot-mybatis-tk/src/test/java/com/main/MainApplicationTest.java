@@ -4,7 +4,10 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.main.demo.util.ConvertWrapperUtil;
 import com.main.demo.vqo.SysResourceVqo;
+import com.main.entity.SysPerson;
 import com.main.entity.SysResource;
+import com.main.entity.SysRole;
+import com.main.manager.SysPersonManager;
 import com.main.mapper.SysResourceMapper;
 import com.main.mapper.SysRoleMapper;
 import com.main.service.*;
@@ -17,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import tk.mybatis.mapper.entity.Example;
 
 import java.util.Date;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MainApplication.class)
@@ -34,6 +38,9 @@ public class MainApplicationTest {
 	@Autowired
 	SysUserRoleService userRoleService;
 
+	@Autowired
+	SysPersonManager manager;
+
 	@Test
 	public void test01() throws Exception{
 
@@ -50,8 +57,22 @@ public class MainApplicationTest {
 		vqo.setField("resource_name");
 		vqo.setSort("asc");
 
-		resourceService.listByExample(ConvertWrapperUtil.convert(vqo));
+		List<SysResource> list = resourceService.listByExample(ConvertWrapperUtil.convert(vqo));
+		System.out.println(list);
 	}
+
+	@Test
+	public void testSlave(){
+		SysPerson person = new SysPerson();
+		person.setId(1234567890L);
+		person.setUsername("梁金龙");
+		person.setPassword("1397856722");
+		person.setAge(21);
+		person.setSex(1);
+		Integer num = manager.insert(person);
+		System.out.println(num);
+	}
+
 
 
 }
