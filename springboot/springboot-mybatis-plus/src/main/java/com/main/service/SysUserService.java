@@ -5,4 +5,5 @@ import com.main.entity.SysUser;
 
 
 public interface SysUserService extends BasicService<SysUser> {
+
 }

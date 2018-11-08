@@ -8,7 +8,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @MapperScan("com.main.mapper")
-@EnableTransactionManagement
+//@EnableTransactionManagement	//开启事务(好像开不开都没什么区别...)
 public class MyBatisPlusConfig {
 
 	/**

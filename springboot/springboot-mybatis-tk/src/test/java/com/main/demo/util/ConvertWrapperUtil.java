@@ -20,7 +20,7 @@ public class ConvertWrapperUtil {
 	 * @param v
 	 * @return
 	 */
-	public static <V extends BasicVqo> Example convert(V v) throws Exception{
+	public static <V extends BasicVqo> Example convertExample(V v) throws Exception{
 		if(v == null){
 			return null;
 		}

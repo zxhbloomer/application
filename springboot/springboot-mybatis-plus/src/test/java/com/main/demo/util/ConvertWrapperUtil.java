@@ -20,7 +20,7 @@ public class ConvertWrapperUtil {
 	 * @param v
 	 * @return
 	 */
-	public static <V extends BasicVqo> QueryWrapper<SysResource> convert(V v) throws Exception{
+	public static <V extends BasicVqo> QueryWrapper<SysResource> convertWrapper(V v) throws Exception{
 		if(v == null){
 			return null;
 		}

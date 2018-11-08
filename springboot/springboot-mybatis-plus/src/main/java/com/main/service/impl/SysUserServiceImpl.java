@@ -6,6 +6,7 @@ import com.main.entity.SysUser;
 import com.main.service.SysUserService;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class SysUserServiceImpl extends BasicServiceImpl<SysUserMapper,SysUser> implements SysUserService {
 
