@@ -15,6 +15,7 @@
         <module>demo-function-interface</module>
         <module>demo-httpclient</module>
         <module>util-encrypt-rsa</module>
+        <module>jdk-news</module>
     </modules>
 
     <dependencies>

@@ -60,4 +60,9 @@ public class SwaggerController {
 	public String getUserByPerson(Person person){
 		return "Success";
 	}
+
+	@GetMapping("/test")
+	public String test(){
+		return "success";
+	}
 }
