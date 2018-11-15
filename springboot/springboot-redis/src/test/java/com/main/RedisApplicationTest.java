@@ -48,15 +48,16 @@ public class RedisApplicationTest {
 	public void test01(){
 //		//Set
 //		stringTemplate.opsForValue().set("username:simple:code:15277578023","126354",60,TimeUnit.SECONDS);
-		//Get
-		String code = stringTemplate.opsForValue().get("username:simple:code:15277578023");
 
-		System.err.println(code);
+//		//Get
+//		String code = stringTemplate.opsForValue().get("username:simple:code:15277578023");
+//
+//		System.err.println(code);
 
-//		//SetObject
-//		redisTemplate.opsForValue().set("obj:user:0", new User("梁金龙","1397856722",true,21),60,TimeUnit.SECONDS);
-//		//GetObject
-//		final User user = (User) redisTemplate.opsForValue().get("obj:user:0");
+		//SetObject
+		redisTemplate.opsForValue().set("obj:user:0", new User("梁金龙","1397856722",true,21),60,TimeUnit.SECONDS);
+		//GetObject
+		final User user = (User) redisTemplate.opsForValue().get("obj:user:0");
 	}
 
 	/**

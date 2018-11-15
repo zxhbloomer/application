@@ -21,7 +21,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-		<java.version>1.8</java.version>
+		<java.version>11</java.version>
 	</properties>
 
 	<dependencies>
@@ -46,31 +46,56 @@
 		</dependency>
 	</dependencies>
 
+
+    <!--<build>-->
+        <!--<plugins>-->
+            <!--<plugin>-->
+                <!--<groupId>org.apache.maven.plugins</groupId>-->
+                <!--<artifactId>maven-compiler-plugin</artifactId>-->
+                <!--<configuration>-->
+                    <!--<source>11</source>-->
+                    <!--<target>11</target>-->
+                <!--</configuration>-->
+            <!--</plugin>-->
+            <!--&lt;!&ndash;&lt;!&ndash; docker的maven插件，官网：https://github.com/spotify/docker-maven-plugin &ndash;&gt;&ndash;&gt;-->
+            <!--&lt;!&ndash;<plugin>&ndash;&gt;-->
+                <!--&lt;!&ndash;<groupId>com.spotify</groupId>&ndash;&gt;-->
+                <!--&lt;!&ndash;<artifactId>docker-maven-plugin</artifactId>&ndash;&gt;-->
+                <!--&lt;!&ndash;<version>0.4.13</version>&ndash;&gt;-->
+                <!--&lt;!&ndash;<configuration>&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash; 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 &ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;<imageName>docker-simple</imageName>&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash; 指定Dockerfile所在的路径 &ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;<dockerDirectory>${project.basedir}/src/main/resources/docker</dockerDirectory>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<resources>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<resource>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<targetPath>/</targetPath>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<directory>${project.build.directory}</directory>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<include>${project.build.finalName}.jar</include>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</resource>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</resources>&ndash;&gt;-->
+                <!--&lt;!&ndash;</configuration>&ndash;&gt;-->
+            <!--&lt;!&ndash;</plugin>&ndash;&gt;-->
+
+        <!--</plugins>-->
+    <!--</build>-->
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
-			<!--&lt;!&ndash; docker的maven插件，官网：https://github.com/spotify/docker-maven-plugin &ndash;&gt;-->
-			<!--<plugin>-->
-				<!--<groupId>com.spotify</groupId>-->
-				<!--<artifactId>docker-maven-plugin</artifactId>-->
-				<!--<version>0.4.13</version>-->
-				<!--<configuration>-->
-					<!--&lt;!&ndash; 注意imageName一定要是符合正则[a-z0-9-_.]的，否则构建不会成功 &ndash;&gt;-->
-					<!--<imageName>docker-simple</imageName>-->
-					<!--&lt;!&ndash; 指定Dockerfile所在的路径 &ndash;&gt;-->
-					<!--<dockerDirectory>${project.basedir}/src/main/resources/docker</dockerDirectory>-->
-					<!--<resources>-->
-						<!--<resource>-->
-							<!--<targetPath>/</targetPath>-->
-							<!--<directory>${project.build.directory}</directory>-->
-							<!--<include>${project.build.finalName}.jar</include>-->
-						<!--</resource>-->
-					<!--</resources>-->
-				<!--</configuration>-->
-			<!--</plugin>-->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+				<configuration>
+					<source>11</source>
+					<target>11</target>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>
