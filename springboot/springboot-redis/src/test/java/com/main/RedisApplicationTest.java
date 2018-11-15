@@ -96,8 +96,8 @@ public class RedisApplicationTest {
 	@Test
 	public void test004() throws Exception{
 		/** 构建连接 **/
-		RedisURI redisURI = RedisURI.create("redis://localhost");
-		redisURI.setPassword("Credit2016Admin");
+		RedisURI redisURI = RedisURI.create("redis://39.108.82.13");
+		redisURI.setPassword("mypassword");
 		RedisClient client = RedisClient.create(redisURI);
 		RedisAsyncCommands<String,String> commands = client.connect().async();
 		/** 同步操作 **/

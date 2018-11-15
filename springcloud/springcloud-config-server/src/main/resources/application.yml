@@ -1,4 +1,6 @@
 eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
   client:
     serviceUrl:
       defaultZone: http://admin:123@server1:9100/eureka/ #仅需要向集群中的某个EurekaServer注册即可

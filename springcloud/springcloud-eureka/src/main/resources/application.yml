@@ -13,6 +13,7 @@ spring:
 eureka:
   instance:
     hostname: localhost #这里使用localhost如果需要使用其他的配置需要在host文件更改映射
+    instance-id: ${spring.application.name}:${server.port}
   client:
     register-with-eureka: false #不向自己进行注册
     fetch-registry: false #获取其他实例的信息

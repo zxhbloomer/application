@@ -1,0 +1,6 @@
+server:
+  ssl:
+    key-store: classpath:httpsfile.pfx
+    key-store-password: RyrxMn5B
+    keyStoreType: PKCS12
+  port: 443 # https 443端口不需要加端口号

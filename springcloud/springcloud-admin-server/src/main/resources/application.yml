@@ -6,10 +6,10 @@ spring:
       name: "user"          #这里在AdminServer端设置了账号和密码
       password: "password"
   rabbitmq:
-    host: 192.168.31.55
+    host: 39.108.82.13
     port: 5672
-    username: demo
-    password: 123456
+    username: guest
+    password: guest
 feign:
   hystrix:
     enabled: true
@@ -23,6 +23,7 @@ eureka:
     serviceUrl:
       defaultZone: http://admin:123@server1:9100/eureka/  #连接到注册中心以便能通过Eureka获取注册服务的信息
   instance:
+    instance-id: ${spring.application.name}:${server.port}
     metadata-map:
       user.name: "user"           #这里是配置eureka的数据使其他的服务能通过这个账号密码连接到AdminServer
       user.password: "password"

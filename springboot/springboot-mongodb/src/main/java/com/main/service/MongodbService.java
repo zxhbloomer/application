@@ -21,7 +21,7 @@ public class MongodbService {
 	@Autowired
 	MongoTemplate template;
 
-	private static final String collectionName = "Test";
+	private static final String collectionName = "demo";
 
 	/**
 	 * 插入

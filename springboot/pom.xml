@@ -23,6 +23,7 @@
         <module>springboot-basic-aop</module>
 		<module>springboot-basic-email</module>
         <module>springboot-basic-fileup</module>
+        <module>springboot-ssl-https</module>
     </modules>
 
 	<packaging>pom</packaging>

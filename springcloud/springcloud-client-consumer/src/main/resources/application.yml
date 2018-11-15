@@ -1,4 +1,6 @@
 eureka:
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
   client:
     serviceUrl:
       defaultZone: http://admin:123@server1:9100/eureka/
@@ -8,10 +10,10 @@ spring:
   application:
     name: service-client-consumer
   rabbitmq: #Config刷新总线BUS需要连接RabbitMQ
-    host: 192.168.31.55
+    host: 39.108.82.13
     port: 5672
-    username: demo
-    password: 123456
+    username: guest
+    password: guest
   boot:
     admin:
       client:

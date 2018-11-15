@@ -67,6 +67,10 @@ public class MyBatisTkApplicationTest {
 		System.out.println(num);
 	}
 
+	@Test
+	public void testQuery(){
+		resourceService.listAll();
+	}
 
 
 }

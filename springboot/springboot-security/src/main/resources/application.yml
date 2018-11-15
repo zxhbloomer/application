@@ -1,13 +1,12 @@
-
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/demo?useUnicode=true&characterEncoding=UTF-8&useSSL=true
+    url: jdbc:mysql://39.108.82.13:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=true
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
   redis:
-    host: 127.0.0.1 #连接的主机
-    password: Credit2016Admin #密码
+    host: 39.108.82.13 #连接的主机
+    password: mypassword #密码
     port: 6379 #端口号
     timeout: 5000 #连接超时时间
     database: 0 #使用第0号数据库
