@@ -18,7 +18,7 @@ public class TokenFilter implements GlobalFilter, Ordered {
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 		String token = exchange.getRequest().getQueryParams().getFirst("token");
-		log.info("Token过滤器 : {}",token);
+		log.info("[Global]Token过滤器 : {}",token);
 		if (token == null || token.isEmpty()) {
 			exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
 			return exchange.getResponse().setComplete();

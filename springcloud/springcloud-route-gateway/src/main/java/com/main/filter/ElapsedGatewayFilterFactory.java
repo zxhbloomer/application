@@ -46,7 +46,7 @@ public class ElapsedGatewayFilterFactory extends AbstractGatewayFilterFactory<El
 							if (config.isWithParams()) {
 								sb.append(" params:").append(exchange.getRequest().getQueryParams());
 							}
-							log.info("全局打印过滤器 : " + sb.toString());
+							log.info("[ONE]打印过滤器(配置在XML中) : " + sb.toString());
 						}
 					})
 			);

@@ -1,12 +1,12 @@
 spring:
   datasource: #使用 datasource.druid.master 这种名称方式会报错(原因:1 可能是含有druid名称,2 可能是不支持多级命名)
     master:
-      url: jdbc:mysql://39.108.82.13:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=true
+      url: jdbc:mysql://server1:3306/test?useUnicode=true&characterEncoding=UTF-8&useSSL=true
       username: root
       password: root
       driver-class-name: com.mysql.cj.jdbc.Driver
     slave:
-      url: jdbc:mysql://39.108.82.13:3306/demo?useUnicode=true&characterEncoding=UTF-8&useSSL=true
+      url: jdbc:mysql://server1:3306/demo?useUnicode=true&characterEncoding=UTF-8&useSSL=true
       username: root
       password: root
       driver-class-name: com.mysql.cj.jdbc.Driver

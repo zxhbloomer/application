@@ -73,7 +73,7 @@ public class RateLimitByIpGatewayFilter implements GatewayFilter,Ordered {
 		Bucket bucket = CACHE.computeIfAbsent(ip,k -> createNewBucket());
 
 
-		log.info("IP限流处理: IP = {}",ip);
+		log.info("[ONE]IP限流处理: IP = {}",ip);
 		if (bucket.tryConsume(1)) {
 			return chain.filter(exchange);
 		} else {

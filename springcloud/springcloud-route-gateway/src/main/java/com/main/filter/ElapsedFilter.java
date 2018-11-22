@@ -31,7 +31,7 @@ public class ElapsedFilter implements GatewayFilter, Ordered {
 				Mono.fromRunnable(() -> {
 					Long startTime = exchange.getAttribute(ELAPSED_TIME_BEGIN);
 					if (startTime != null) {
-						log.info("用户打印过滤器 : " + exchange.getRequest().getURI().getRawPath() + ": " + (System.currentTimeMillis() - startTime) + "ms");
+						log.info("[ONE]用户打印过滤器 : " + exchange.getRequest().getURI().getRawPath() + ": " + (System.currentTimeMillis() - startTime) + "ms");
 					}
 				})
 				//Post End

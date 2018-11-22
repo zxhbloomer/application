@@ -6,5 +6,5 @@ import com.main.entity.SysResource;
 import java.util.List;
 
 public interface SysResourceMapper extends BasicMapper<SysResource> {
-	List<SysResource> selectAll();
+	List<SysResource> selectSimpleAll();
 }

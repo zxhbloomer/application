@@ -3,6 +3,8 @@ package com.main.service;
 import com.main.common.base.service.BasicService;
 import com.main.entity.SysResource;
 
-public interface SysResourceService extends BasicService<SysResource> {
+import java.util.List;
 
+public interface SysResourceService extends BasicService<SysResource> {
+    List<SysResource> selectSimpleAll();
 }

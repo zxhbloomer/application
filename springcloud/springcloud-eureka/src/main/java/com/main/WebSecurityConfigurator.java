@@ -15,6 +15,15 @@ public class WebSecurityConfigurator extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		/**
+		 * yml方式的需要另外在Bean里面关闭CSRF
+		 */
+//		super.configure(http);
+//		http.csrf().disable();//关闭ServerCSRF
+
+		/**
+		 * Bean方式配置开启HttpBasic方式验证
+		 */
 		//注意：为了可以使用 http://${user}:${password}@${host}:${port}/eureka/
 		// 这种方式登录,所以必须是httpBasic,如果是form方式,不能使用url格式登录
 		http

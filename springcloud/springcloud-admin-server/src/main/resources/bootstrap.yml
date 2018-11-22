@@ -2,10 +2,10 @@ spring:
   cloud:
     config:
       label: master
-      uri: http://localhost:9200
+      uri: http://server1:9200
       name: config-client-dev
   zipkin:
-    base-url: http://192.168.31.29:9411/
+    base-url: http://server1:9411/
     sender:
       type: web
     locator:
@@ -17,3 +17,16 @@ spring:
         enabled: true
     sampler:
       probability: 1.0
+eureka:
+  client:
+    security:
+      basic:
+        user: admin
+        password: 123
+    serviceUrl:
+      defaultZone: http://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@server1:9100/eureka/  #连接到注册中心以便能通过Eureka获取注册服务的信息
+  instance:
+    instance-id: ${spring.application.name}:${server.port}
+    metadata-map:
+      user.name: "user"           #这里是配置eureka的数据使其他的服务能通过这个账号密码连接到AdminServer
+      user.password: "password"

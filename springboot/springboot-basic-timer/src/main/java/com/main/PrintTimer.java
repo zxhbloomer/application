@@ -61,4 +61,52 @@ public class PrintTimer {
 //		log.info("Timer4-InitialDelay : {}",now());
 //	}
 
+
+    /**
+     * 多线程任务测试
+     */
+
+//    /**
+//     * 任务1
+//     */
+//    @Scheduled(fixedRate = 1000 * 60 * 100)
+//    public void timer2FixedRate() throws Exception {
+//        log.info("第一个任务 - 开始");
+//        for(int i=0;i<10;i++){
+//            System.out.println(Thread.currentThread().getName() + " : 执行中");
+//            Thread.sleep(1 * 1000);
+//        }
+//        log.info("第一个任务 - 结束");
+//    }
+//
+//    /**
+//     * 任务2
+//     */
+//    @Scheduled(fixedRate = 1000 * 60 * 100)
+//    public void timer2FixedRate2() throws Exception {
+//        log.info("第二个任务 - 开始");
+//
+//        for(int i=0;i<10;i++){
+//            System.out.println(Thread.currentThread().getName() + " : 执行中");
+//            Thread.sleep(1 * 1000);
+//        }
+//
+//        log.info("第二个任务 - 结束");
+//    }
+//
+//    /**
+//     * 任务3
+//     */
+//    @Scheduled(fixedRate = 1000 * 60 * 100)
+//    public void timer2FixedRate3() throws Exception {
+//        log.info("第三个任务 - 开始");
+//
+//        for(int i=0;i<10;i++){
+//            System.out.println(Thread.currentThread().getName() + " : 执行中");
+//            Thread.sleep(1 * 1000);
+//        }
+//
+//        log.info("第二个任务 - 结束");
+//    }
+
 }

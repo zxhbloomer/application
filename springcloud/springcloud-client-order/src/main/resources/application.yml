@@ -1,23 +1,13 @@
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${server.port}
-  client:
-    serviceUrl:
-      defaultZone: http://admin:123@server1:9100/eureka/
 server:
   port: 9302
 spring:
   application:
     name: service-client-order
   rabbitmq: #Config刷新总线BUS需要连接RabbitMQ
-    host: 39.108.82.13
+    host: server1
     port: 5672
     username: guest
     password: guest
-  boot:
-    admin:
-      client:
-        url: http://localhost:9400
 feign:
   hystrix:
     enabled: true #使熔断器接口方法实现方式起作用

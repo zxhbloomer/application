@@ -72,5 +72,4 @@ public class MyBatisTkApplicationTest {
 		resourceService.listAll();
 	}
 
-
 }

@@ -18,7 +18,7 @@
         sys_resource
     </sql>
 
-    <select id="selectAll" resultType="SysResource">
+    <select id="selectSimpleAll" resultType="SysResource">
         select <include refid="base_column_list"/> from <include refid="table_name"/>
     </select>
 

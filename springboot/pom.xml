@@ -24,6 +24,7 @@
 		<module>springboot-basic-email</module>
         <module>springboot-basic-fileup</module>
         <module>springboot-ssl-https</module>
+        <module>springboot-alibaba-oss</module>
     </modules>
 
 	<packaging>pom</packaging>

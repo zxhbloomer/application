@@ -322,5 +322,10 @@ public class MyBatisPlusApplicationTest {
 
 	}
 
+	@Test
+	public void testAll(){
+		resourceService.selectSimpleAll();
+	}
+
 
 }

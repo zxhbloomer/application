@@ -1,9 +1,3 @@
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${server.port}
-  client:
-    serviceUrl:
-      defaultZone: http://admin:123@server1:9100/eureka/
 server:
   port: 9601
 spring:

@@ -1,26 +1,19 @@
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://admin:123@server1:9100/eureka/
+
 server:
   port: 9501
 spring:
   application:
     name: service-route-gateway
   rabbitmq: #Config刷新总线BUS需要连接RabbitMQ
-    host: 39.108.82.13
+    host: server1
     port: 5672
     username: guest
     password: guest
   redis: #限流所需
-    host: 39.108.82.13
+    host: server1
     password: mypassword
     port: 6379
     timeout: 5000
-  boot:
-    admin:
-      client:
-        url: http://localhost:9400 #Admin
   cloud:
     gateway:
       discovery:

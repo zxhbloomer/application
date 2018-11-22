@@ -1,23 +1,13 @@
-eureka:
-  instance:
-    instance-id: ${spring.application.name}:${server.port}
-  client:
-    serviceUrl:
-      defaultZone: http://admin:123@server1:9100/eureka/
 server:
   port: 9301
 spring:
   application:
     name: service-client-personal
   rabbitmq: #Config刷新总线BUS需要连接RabbitMQ
-    host: 39.108.82.13
+    host: server1
     port: 5672
     username: guest
     password: guest
-  boot:
-    admin:
-      client:
-        url: http://localhost:9400
 feign:
   hystrix:
     enabled: true #使熔断器接口方法实现方式起作用(OpenFeign自带Hystrix,但是默认没有打开)
@@ -27,15 +17,17 @@ management:
       exposure:
         include: "*" #2.0版本server或client必须加上此配置,不然无法通过这个/actuator/bus-refresh刷新,还可以开启hystrix.stream
 turbine:
-  appConfig: service-client-personal,service-client-order,service-client-cosumer  #配置需要监控的服务名(spring.application.name)
+  appConfig: service-client-personal,service-client-order,service-client-consumer  #配置需要监控的服务名(spring.application.name)
   clusterNameExpression: new String("default") #默认为服务名的集群,此时用默认即可
 #turbine集群配置
 #turbine:
-#  app-config: eureka-client-consumer1,eureka-client-consumer2  #需要监控的服务名(Eureka的name)
+#  app-config: service-client-personal,service-client-order,service-client-consumer  #需要监控的服务名(Eureka的name)
 #  aggregator:
-#    cluster-config: kanjia,gateway #需要监控的服务集群名
+#    cluster-config: one,two #需要监控的服务集群名
 #  cluster-name-expression: metadata['cluster']
 #  combine-host: true
 #  instanceUrlSuffix:
-#    kanjia: actuator/hystrix.stream    #key为clusterConfig的集群名字，默认为default
-#    gateway: actuator/hystrix.stream    #value为集群的hystrix监控url后缀，springboot2.0默认为actuator/hystrix.stream
+#    one: actuator/hystrix.stream    #key为clusterConfig的集群名字，默认为default
+#    two: actuator/hystrix.stream    #value为集群的hystrix监控url后缀，springboot2.0默认为actuator/hystrix.stream
+
+
