@@ -31,4 +31,4 @@ eureka:
         user: admin
         password: 123
     serviceUrl:
-      defaultZone: http://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@server1:9100/eureka/
+      defaultZone: https://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@server1:9100/eureka/

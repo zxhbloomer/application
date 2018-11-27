@@ -18,7 +18,7 @@ import reactor.core.publisher.Mono;
 @SpringCloudApplication    //这个注解包括了开启熔断器和开启Client的注解
 @EnableHystrixDashboard    //熔断器的监控
 @EnableFeignClients        //启动Feign远
-@ComponentScan(value = {"com.jack.springcloud","com.main"}) //扫描一些公共的配置(还要把自己也扫进来哦)
+@ComponentScan(value = {"com.jack.springcloud","com.main","com.config"}) //扫描一些公共的配置(还要把自己也扫进来哦)
 @RestController
 public class OrderClientApplication {
 	public static void main(String[] args){

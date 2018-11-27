@@ -1,6 +1,12 @@
 #单个EurekaServer配置
 server:
   port: 9100
+  ssl:  #Https配置
+    enabled: true
+    key-store: classpath:server.p12
+    key-store-password: server
+    key-store-type: PKCS12
+    key-alias: server
 spring:
   security:
 #    basic:
@@ -38,6 +44,11 @@ eureka:
       expected-number-of-renews-per-min: 1 #指定每分钟需要收到的续约次数值,实际改值在其中被写死成 count*2,另外也会被更新
     hostname: localhost #这里使用localhost如果需要使用其他的配置需要在host文件更改映射
     instance-id: ${spring.application.name}:${server.port}
+
+    secure-port: ${server.port}
+    secure-port-enabled: false
+    home-page-url: https://${eureka.instance.hostname}:${server.port}/
+    status-page-url: https://${eureka.instance.hostname}:${server.port}/
   client:
     register-with-eureka: false
     fetch-registry: false

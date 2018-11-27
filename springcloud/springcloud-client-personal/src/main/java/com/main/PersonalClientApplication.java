@@ -1,17 +1,11 @@
 package com.main;
 
-import brave.sampler.Sampler;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 import org.springframework.cloud.netflix.turbine.EnableTurbine;
 import org.springframework.cloud.openfeign.EnableFeignClients;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 /**
  * 熔断器页面:			http://localhost:9301/hystrix
@@ -27,37 +21,11 @@ import org.springframework.web.client.RestTemplate;
 @EnableHystrixDashboard    //熔断器的监控
 @EnableTurbine             //在一个地方开启 "监控多个应用" 的功能就行了
 @EnableFeignClients        //启动Feign远程调用
-@ComponentScan(value = {"com.jack.springcloud","com.main"}) //扫描一些公共的配置(还要把自己也扫进来哦)
-@RestController
+@ComponentScan(value = {"com.jack.springcloud","com.main","com.config"}) //扫描一些公共的配置(还要把自己也扫进来哦)
 public class PersonalClientApplication {
 
 	public static void main(String[] args){
 		SpringApplication.run(PersonalClientApplication.class);
-	}
-
-
-	@Autowired
-	private RestTemplate restTemplate;
-
-	@Bean
-	public RestTemplate getRestTemplate(){
-		return new RestTemplate();
-	}
-
-	@Bean
-	public Sampler defaultSampler() {
-		return Sampler.ALWAYS_SAMPLE;
-	}
-
-	@RequestMapping("/personOne")
-	public String personOne(){
-		System.err.println("Method : PersonOne");
-		return restTemplate.getForObject("http://localhost:9302/orderOne", String.class);
-	}
-	@RequestMapping("/personTow")
-	public String personTow(){
-		System.err.println("Method : personTow");
-		return "ServiceName=service-client-personal";
 	}
 
 }

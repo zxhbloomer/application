@@ -1,15 +1,20 @@
 package com.main.controller;
 
+import com.jack.springcloud.bean.User;
 import com.main.feign.ConsumerService;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import reactor.core.publisher.Mono;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -39,8 +44,35 @@ public class OrderController {
 		order.put("goodName",goodsName);
 		String result = consumerService.sendMessage(order.toString());
 
-		return "{ Shopping Result : " + result + " }";
+		return "{ Shopping Result (购物) : " + result + " }";
 	}
 
+
+	/**
+	 * FeignGet请求多参数传递
+	 */
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public String addUser(User user){
+		log.info("GetMultiParam : Token = {}",request().getHeader("account_token"));
+		return user.toString();
+	}
+
+	/**
+	 * FeignPost请求多参数传递
+	 */
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String updateUser(@RequestBody User user){
+		log.info("PostMultiParam : Token = {}",request().getHeader("account_token"));
+		return user.toString();
+	}
+
+	/**
+	 * 通过上下文获取Request
+	 */
+	protected HttpServletRequest request() {
+		ServletRequestAttributes requestAttributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+		HttpServletRequest request = requestAttributes.getRequest();
+		return request;
+	}
 
 }

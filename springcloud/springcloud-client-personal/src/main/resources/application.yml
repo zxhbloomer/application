@@ -9,8 +9,43 @@ spring:
     username: guest
     password: guest
 feign:
+#  httpclient:
+#    enabled: false #使用HttpClient替代URLConnection
+  client:
+    config:
+      default: #如果你的名称为default则为全局的配置
+        requestInterceptors:
+          - com.main.interceptor.CookieLoggerInterceptor
+          - com.main.interceptor.FeignTokenInterceptor
+      github-client: #[对单个Feign进行配置]这里是@FeignClient里面的name
+        connectTimeout: 50000 #连接超时时间
+        readTimeout: 50000 #读取超时时间
+        loggerLevel: full #配置Feign的日志级别
+        requestInterceptors: #配置拦截器
+          - com.main.interceptor.SimpleLoggerInterceptor
   hystrix:
     enabled: true #使熔断器接口方法实现方式起作用(OpenFeign自带Hystrix,但是默认没有打开)
+  compression:  #[BUG]乱码了
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json # 配置压缩支持的MIME TYPE
+      min-request-size: 2048  # 配置压缩数据大小的下限
+    response:
+      enabled: true # 配置响应GZIP压缩 #开启Feign的GZIP压缩(接受类型=ResponseEntity<byte[]>)
+#ribbon: #ribbon超时设置
+#  ReadTimeout: 120000
+#  ConnectTimeouot: 3000
+hystrix:  #熔断器配置
+  command:
+    default:
+      circuitBreaker:
+        sleepWindowInMilliseconds: 100000
+        forceClosed: true
+      execution:
+        isolation:
+#          strategy: SEMAPHORE #调整隔离策略,解决RequestInterceptor无法获取Request的问题(不推荐)
+          thread:
+            timeoutInMilliseconds: 600000 #Hystrix 配置参数(目前只能全局配置)，例如说 Hystrix 执行超时时间(可解决FeignTimeout超时,以及第一次请求超时的问题)
 management:
   endpoints:
     web:

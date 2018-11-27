@@ -24,7 +24,7 @@ eureka:
         user: admin
         password: 123
     serviceUrl:
-      defaultZone: http://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@server1:9100/eureka/  #连接到注册中心以便能通过Eureka获取注册服务的信息
+      defaultZone: https://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@server1:9100/eureka/  #连接到注册中心以便能通过Eureka获取注册服务的信息
   instance:
     instance-id: ${spring.application.name}:${server.port}
     metadata-map:

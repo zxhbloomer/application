@@ -27,7 +27,7 @@ public class ConsumerController {
 	public String sendMessage(String order){
 		System.err.println("ConsumerService : 接收到 [订单服务器] 订单为 "+order+" 的订单处理请求");
 		String result = personalService.receiverMessage("你购买的商品 " + order + "成功");
-		return "{ Done Result = " + result + "}";
+		return "{ Done Result (订单) = " + result + "}";
 	}
 
 }

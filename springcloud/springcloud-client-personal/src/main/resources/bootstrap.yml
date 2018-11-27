@@ -48,7 +48,7 @@ eureka:
     eureka-server-total-connections-per-host: 50 #每个host能使用的最大连接数[DefaultMax-PerRoute](EurekaClientHttp)
     eureka-connection-idle-timeout-seconds: 30 #连接池中连接的空闲时间[connectionIdleTimeout](EurekaClientHttp)
     serviceUrl:
-      defaultZone: http://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@server1:9100/eureka/
+      defaultZone: https://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@server1:9100/eureka/
   instance:
     #    metadata-map: "" #指定应用实例的元数据信息
     prefer-ip-address: false #是否优先使用ip来代替host name作为实例的hostName字段值

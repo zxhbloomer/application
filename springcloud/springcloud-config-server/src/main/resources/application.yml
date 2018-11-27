@@ -6,7 +6,7 @@ eureka:
       user: admin
       password: 123
     serviceUrl:
-      defaultZone: http://${eureka.client.security.user}:${eureka.client.security.password}@server1:9100/eureka/ #仅需要向集群中的某个EurekaServer注册即可
+      defaultZone: https://${eureka.client.security.user}:${eureka.client.security.password}@server1:9100/eureka/ #仅需要向集群中的某个EurekaServer注册即可
 server:
   port: 9200
 spring:

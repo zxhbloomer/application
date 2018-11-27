@@ -1,16 +1,15 @@
 package com.main.controller;
 
+import com.jack.springcloud.bean.People;
+import com.jack.springcloud.bean.User;
 import com.main.feign.OrderService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
 
 @Slf4j
@@ -55,6 +54,49 @@ public class PersonalController {
 		Thread.sleep(10000);
 
 		return "success";
+	}
+
+	/**
+	 * 用于演示Feign的Get请求多参数传递
+	 */
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public String addUser(){
+		return orderService.addUser(getInstance());
+	}
+
+	/**
+	 * 用于演示Feign的Post请求多参数传递
+	 */
+	@RequestMapping(value = "/update"
+			, method = RequestMethod.GET)
+	public String updateUser(){
+		return orderService.updateUser(getInstance());
+	}
+
+	public User getInstance(){
+		User user = new User();
+		user.setUsername("梁金龙");
+		user.setPassword("6661918");
+		user.setLikes(new String[]{"玩游戏"});
+		user.setSex(true);
+		user.setAccountList(new ArrayList<>(){{add(123L);}});
+
+		People p1 = new People();
+		p1.setNickname("One");
+		p1.setDegree(1);
+
+		People p2 = new People();
+		p2.setNickname("Two");
+		p2.setDegree(2);
+
+		People p3 = new People();
+		p3.setNickname("Three");
+		p3.setDegree(3);
+
+		user.setPeople(p1);
+		user.setPeopleList(new ArrayList<>(){{add(p2);}});
+		user.setPeoples(new People[]{p3});
+		return user;
 	}
 
 

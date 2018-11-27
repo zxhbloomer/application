@@ -9,6 +9,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
@@ -19,10 +20,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-		//在内存中配置两个用户
+		//在内存中配置两个用户(密码123456)
 		InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
-		userDetailsManager.createUser(User.withUsername("user_authorization_code").password("123456").authorities("USER").build());
-		userDetailsManager.createUser(User.withUsername("user_password").password("123456").authorities("USER").build());
+		userDetailsManager.createUser(User.withUsername("user_authorization_code").password("$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa").authorities("USER").build());
+		userDetailsManager.createUser(User.withUsername("user_password").password("$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa").authorities("USER").build());
 		auth.userDetailsService(userDetailsManager);
 	}
 
@@ -49,8 +50,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	@Bean
 	public PasswordEncoder passwordEncoder(){
-		//配置密码解析器
-		return NoOpPasswordEncoder.getInstance();
+		//配置密码解析器(不对密码进行加密)
+//		return NoOpPasswordEncoder.getInstance();
+		return new BCryptPasswordEncoder();
 	}
 
 }
