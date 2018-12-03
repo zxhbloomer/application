@@ -2,14 +2,10 @@ package com.main.controller;
 
 import com.jack.springcloud.bean.User;
 import com.main.feign.ConsumerService;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiImplicitParams;
-import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -22,7 +18,7 @@ import java.util.HashMap;
 @RefreshScope
 @RestController
 @RequestMapping("/order")
-public class OrderController {
+public class OrderController{
 
 	/**
 	 * 获取Github里面的属性
@@ -49,21 +45,21 @@ public class OrderController {
 
 
 	/**
-	 * FeignGet请求多参数传递
+	 * Feign-Get请求多参数传递
 	 */
 	@RequestMapping(value = "/add", method = RequestMethod.GET)
 	public String addUser(User user){
 		log.info("GetMultiParam : Token = {}",request().getHeader("account_token"));
-		return user.toString();
+		return "Get : " + user.toString();
 	}
 
 	/**
-	 * FeignPost请求多参数传递
+	 * Feign-Post请求多参数传递
 	 */
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String updateUser(@RequestBody User user){
 		log.info("PostMultiParam : Token = {}",request().getHeader("account_token"));
-		return user.toString();
+		return "Post : " + user.toString();
 	}
 
 	/**

@@ -3,6 +3,7 @@ package com.main.controller;
 import com.jack.springcloud.bean.People;
 import com.jack.springcloud.bean.User;
 import com.main.feign.OrderService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -38,7 +39,7 @@ public class PersonalController {
 	public String buyGoods(String goodsName){
 		System.err.println("Controller : 购买物品-" + goodsName);
 		String result = orderService.receiverOrder(goodsName);
-		return "{ Buy Result = " + result + " }";
+		return "{ Buy Result (用户) = " + result + " }";
 	}
 
 	@GetMapping("/testMemory")
@@ -67,8 +68,7 @@ public class PersonalController {
 	/**
 	 * 用于演示Feign的Post请求多参数传递
 	 */
-	@RequestMapping(value = "/update"
-			, method = RequestMethod.GET)
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
 	public String updateUser(){
 		return orderService.updateUser(getInstance());
 	}
@@ -99,5 +99,22 @@ public class PersonalController {
 		return user;
 	}
 
+
+	/**
+	 * 使用熔断器
+	 */
+	@HystrixCommand(fallbackMethod = "defaultPersonal")
+	@RequestMapping(value = "/gerPersonal",method = RequestMethod.GET)
+	public String getPersonal(String name) throws Exception{
+		if("jack".equals(name)){
+			return "success";
+		}else{
+			throw new Exception();
+		}
+	}
+
+	public String defaultPersonal(String name){
+		return "你的名字不叫jack!!!";
+	}
 
 }

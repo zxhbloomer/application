@@ -1,5 +1,7 @@
-package com.main;
+package com.main.config;
 
+import com.main.service.SecurityUserDetailService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,13 +20,25 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private SecurityUserDetailService securityUserDetailService;
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-		//在内存中配置两个用户(密码123456)
-		InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
-		userDetailsManager.createUser(User.withUsername("user_authorization_code").password("$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa").authorities("USER").build());
-		userDetailsManager.createUser(User.withUsername("user_password").password("$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa").authorities("USER").build());
-		auth.userDetailsService(userDetailsManager);
+//		//在内存中配置两个用户(密码123456)
+//		InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
+//		userDetailsManager.createUser(User.withUsername("user_authorization_code").password("$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa").authorities("USER").build());//$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa
+//		userDetailsManager.createUser(User.withUsername("user_password").password("$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa").authorities("USER").build());//$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa
+//		auth.userDetailsService(userDetailsManager);
+
+		auth.userDetailsService(securityUserDetailService).passwordEncoder(passwordEncoder());
+	}
+
+	@Bean
+	public PasswordEncoder passwordEncoder(){
+		//配置密码解析器(不对密码进行加密)
+//		return NoOpPasswordEncoder.getInstance();
+		return new BCryptPasswordEncoder();
 	}
 
 	@Bean
@@ -47,12 +61,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 			.and()
 			.authorizeRequests()
 			.antMatchers("/oauth/*").permitAll();
+
 	}
-	@Bean
-	public PasswordEncoder passwordEncoder(){
-		//配置密码解析器(不对密码进行加密)
-//		return NoOpPasswordEncoder.getInstance();
-		return new BCryptPasswordEncoder();
+
+
+	public static void main(String[] args){
+	 	System.out.println(new BCryptPasswordEncoder().encode("secret"));
 	}
 
 }

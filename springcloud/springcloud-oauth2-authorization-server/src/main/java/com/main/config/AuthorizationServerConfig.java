@@ -1,4 +1,4 @@
-package com.main;
+package com.main.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -37,7 +37,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 				.withClient("client") //客户端ID
 				.authorizedGrantTypes("authorization_code","password","refresh_token") //客户端可以使用的授权类型,refresh_token：通过以上授权获得的刷新令牌来获取新的令牌。(还有implicit,client_credentials)
 				.scopes("all")//允许请求范围
-				.secret("secret")//客户端安全码
+				.secret("$2a$10$cnYeZCVpPMlOTb7Jx/9zi.hTlGKqDSw8wgFhYWla/WQAYXabjQzV2")//客户端安全码(如果你使用了密码编码,安全码也需要是编码的格式!!!)
 				.redirectUris("http://localhost:8888/");//回调地址
 	}
 
