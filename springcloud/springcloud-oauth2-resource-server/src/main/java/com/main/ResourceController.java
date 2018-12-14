@@ -1,6 +1,8 @@
 package com.main;
 
 import lombok.extern.slf4j.Slf4j;
+import org.bouncycastle.cert.ocsp.Req;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -23,6 +25,15 @@ public class ResourceController {
 	public String getInstanceByServiceId(@PathVariable("serviceId") String serviceId){
 		log.info("GetInstanceByServiceId : {}",serviceId);
 		return "HelloWorld";
+	}
+
+	/**
+	 * 只有ROLE_ADMIN权限才能访问
+	 */
+	@PreAuthorize("hasRole('ROLE_ADMIN')")
+	@RequestMapping(value = "/onlyAdmin",method = RequestMethod.GET)
+	public String onlyAdmin(){
+		return "Hello Admin";
 	}
 
 }

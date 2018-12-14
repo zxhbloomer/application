@@ -5,6 +5,8 @@ import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.ClientHttpResponse;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
@@ -25,6 +27,8 @@ public class ResourceServiceConfig extends ResourceServerConfigurerAdapter{
 
 	@Autowired
 	RestTemplate restTemplate;
+
+
 
 	@Override
 	public void configure(ResourceServerSecurityConfigurer resources) throws Exception {

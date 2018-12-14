@@ -15,6 +15,7 @@ import org.springframework.data.redis.core.StringRedisTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.Serializable;
+import java.security.MessageDigest;
 import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ExecutorService;
@@ -40,6 +41,15 @@ public class RedisApplicationTest {
 	@Autowired
 	private RedisTemplate<String,Serializable> redisTemplate;
 
+
+	/**
+	 * 测试
+	 */
+	@Test
+	public void testOther() throws Exception{
+		MessageDigest digest = MessageDigest.getInstance("MD5");
+
+	}
 
 	/**
 	 * 常用操作

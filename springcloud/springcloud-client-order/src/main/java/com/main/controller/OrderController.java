@@ -1,6 +1,7 @@
 package com.main.controller;
 
 import com.jack.springcloud.bean.User;
+import com.jack.springcloud.common.util.SimpleUserUtil;
 import com.main.feign.ConsumerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
+import java.util.Enumeration;
 import java.util.HashMap;
 
 @Slf4j
@@ -30,7 +32,7 @@ public class OrderController{
 	ConsumerService consumerService;
 
 	@RequestMapping("/receiverGoods")
-	public String receiverOrder(String goodsName){
+	public String receiverOrder(String goodsName,HttpServletRequest request){
 		System.err.println("OrderService : 接收到 [用户服务器] 购买 "+goodsName+" 物品的请求");
 
 		HashMap order = new HashMap();
@@ -39,8 +41,8 @@ public class OrderController{
 		order.put("createTime",new Date());
 		order.put("goodName",goodsName);
 		String result = consumerService.sendMessage(order.toString());
-
-		return "{ Shopping Result (购物) : " + result + " }";
+		log.info("RequestUser : {}", SimpleUserUtil.getRequestUser());
+		return "{ Shopping Result (Two) : " + result + " }";
 	}
 
 

@@ -20,6 +20,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+
 	@Autowired
 	private SecurityUserDetailService securityUserDetailService;
 
@@ -30,8 +31,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //		userDetailsManager.createUser(User.withUsername("user_authorization_code").password("$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa").authorities("USER").build());//$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa
 //		userDetailsManager.createUser(User.withUsername("user_password").password("$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa").authorities("USER").build());//$2a$10$PSfO0GUkEakNNE.LIZCmPu.E/iS7KYzrhIzBfbM6onR0MAl3OKjsa
 //		auth.userDetailsService(userDetailsManager);
-
-		auth.userDetailsService(securityUserDetailService).passwordEncoder(passwordEncoder());
+		auth.userDetailsService(securityUserDetailService);
 	}
 
 	@Bean
@@ -64,9 +64,5 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	}
 
-
-	public static void main(String[] args){
-	 	System.out.println(new BCryptPasswordEncoder().encode("secret"));
-	}
 
 }

@@ -47,7 +47,7 @@ public class OrderClientApplication {
 	@RequestMapping("/orderOne")
 	public String orderOne(){
 		System.err.println("Method : OrderOne");
-		return restTemplate.getForObject("http://localhost:9301/personTow",String.class);
+		return restTemplate.getForObject("http://SERVICE-CLIENT-PERSONAL/personTow",String.class);
 	}
 
 

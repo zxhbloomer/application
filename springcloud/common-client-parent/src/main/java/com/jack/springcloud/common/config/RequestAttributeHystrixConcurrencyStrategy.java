@@ -1,4 +1,4 @@
-package com.main.config;
+package com.jack.springcloud.common.config;
 
 import com.netflix.hystrix.HystrixThreadPoolKey;
 import com.netflix.hystrix.HystrixThreadPoolProperties;
@@ -22,11 +22,11 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 /**
- * 解决RequestInterceptor无法获取Request的问题(Hystrix线程隔离的问题)
+ * 解决RequestInterceptor Feign拦截器无法获取Request的问题(Hystrix线程隔离的问题)
  */
 @Slf4j
 @Component
-public class RequestAttributeHystrixConcurrencyStrategy  extends HystrixConcurrencyStrategy {
+public class RequestAttributeHystrixConcurrencyStrategy extends HystrixConcurrencyStrategy {
 
     private HystrixConcurrencyStrategy delegate;
 

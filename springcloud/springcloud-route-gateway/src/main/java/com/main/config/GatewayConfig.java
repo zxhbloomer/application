@@ -33,13 +33,13 @@ public class GatewayConfig {
 		return new ElapsedGatewayFilterFactory();
 	}
 
-	/**
-	 * 2 启用TokenFilter全局处理器
-	 */
-	@Bean
-	public TokenFilter tokenFilter(){
-		return new TokenFilter();
-	}
+//	/**
+//	 * 2 启用TokenFilter全局处理器
+//	 */
+//	@Bean
+//	public TokenFilter tokenFilter(){
+//		return new TokenFilter();
+//	}
 
 
 	/**
@@ -73,6 +73,6 @@ public class GatewayConfig {
 	 */
 	@Bean
 	public RateLimitByIpGatewayFilter rateLimitByIpGatewayFilter(){
-		return new RateLimitByIpGatewayFilter(10,1, Duration.ofSeconds(60));
+		return new RateLimitByIpGatewayFilter(10000,1, Duration.ofSeconds(60));
 	}
 }

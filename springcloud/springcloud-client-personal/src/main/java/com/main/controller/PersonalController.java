@@ -1,7 +1,9 @@
 package com.main.controller;
 
 import com.jack.springcloud.bean.People;
+import com.jack.springcloud.bean.RequestUser;
 import com.jack.springcloud.bean.User;
+import com.jack.springcloud.common.util.SimpleUserUtil;
 import com.main.feign.OrderService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import lombok.extern.slf4j.Slf4j;
@@ -10,7 +12,9 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
+import java.util.Enumeration;
 import java.util.Random;
 
 @Slf4j
@@ -36,10 +40,11 @@ public class PersonalController {
 	}
 
 	@GetMapping("/buyGoods")
-	public String buyGoods(String goodsName){
+	public String buyGoods(String goodsName, HttpServletRequest request){
 		System.err.println("Controller : 购买物品-" + goodsName);
 		String result = orderService.receiverOrder(goodsName);
-		return "{ Buy Result (用户) = " + result + " }";
+		log.info("RequestUser : {}", SimpleUserUtil.getRequestUser());
+		return "{ Buy Result (One) = " + result + " }";
 	}
 
 	@GetMapping("/testMemory")

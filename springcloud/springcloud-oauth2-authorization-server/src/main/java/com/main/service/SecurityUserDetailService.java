@@ -19,6 +19,8 @@ SecurityUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        if(!"one".equals(username) && !"two".equals(username) && !"three".equals(username))throw new UsernameNotFoundException("用户名不存在");
+
         SysUserVo userVo = new SysUserVo();
         userVo.setId(123456789L);
         userVo.setUsername(username);
@@ -27,13 +29,20 @@ SecurityUserDetailService implements UserDetailsService {
         userVo.setAccountNonLocked(true);
         userVo.setCredentialsNonExpired(true);
         userVo.setEnabled(1);
-        userVo.setRoles("USER");
+        userVo.setRoles("ROLE_USER");
+
         
         if(userVo==null) throw new UsernameNotFoundException("用户名不存在");
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        GrantedAuthority authoritie = new SimpleGrantedAuthority(userVo.getRoles());
-        authorities.add(authoritie);
+        GrantedAuthority authority = new SimpleGrantedAuthority(userVo.getRoles());
+        authorities.add(authority);
+
+        if("three".equalsIgnoreCase(username)){
+            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        }
+
         SecurityUserDetails securityUserDetails = new SecurityUserDetails(authorities, userVo.getPassword(), userVo.getUsername(), userVo.getAccountNonExpired(), userVo.getAccountNonLocked(),  userVo.getCredentialsNonExpired(), userVo.getEnabled(),userVo.getId());
+
         return securityUserDetails;
     }
 }

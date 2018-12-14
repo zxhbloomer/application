@@ -37,7 +37,7 @@ public class HomeController {
     @RequestMapping("/personOne")
     public String personOne(){
         System.err.println("Method : PersonOne");
-        return restTemplate.getForObject("http://localhost:9302/orderOne", String.class);
+        return restTemplate.getForObject("http://SERVICE-CLIENT-ORDER/orderOne", String.class);
     }
     @RequestMapping("/personTow")
     public String personTow(){
