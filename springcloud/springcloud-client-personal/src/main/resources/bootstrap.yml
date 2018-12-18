@@ -54,4 +54,4 @@ eureka:
     prefer-ip-address: false #是否优先使用ip来代替host name作为实例的hostName字段值
     lease-expiration-duration-in-seconds: 90 #指定Eureka Client间隔多久需要向Eureka Server发送心跳来告知EurekaServer该实例还存活
     lease-renewal-interval-in-seconds: 30 #EurekaClient想EurekaServer发送心跳的时间间隔
-    instance-id: ${spring.application.name}:${server.port}
+    instance-id: ${spring.application.name}:${server.port} #生成随机数${random.value}

@@ -11,11 +11,12 @@
 
     <modules>
         <module>common</module>
-        <module>demo-array-sort</module>
         <module>demo-function-interface</module>
         <module>demo-httpclient</module>
         <module>util-encrypt-rsa</module>
         <module>jdk-news</module>
+        <module>demo-array-list-sort</module>
+        <module>demo-array-list-stream</module>
     </modules>
 
     <dependencies>

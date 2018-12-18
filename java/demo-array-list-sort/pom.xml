@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>demo-array-sort</artifactId>
+    <artifactId>demo-array-list-sort</artifactId>
 
 
     <build>
@@ -24,6 +24,4 @@
             </plugin>
         </plugins>
     </build>
-
-
 </project>

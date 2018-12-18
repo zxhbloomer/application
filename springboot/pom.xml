@@ -25,6 +25,7 @@
         <module>springboot-basic-fileup</module>
         <module>springboot-ssl-https</module>
         <module>springboot-alibaba-oss</module>
+        <module>mybatis-common</module>
     </modules>
 
 	<packaging>pom</packaging>

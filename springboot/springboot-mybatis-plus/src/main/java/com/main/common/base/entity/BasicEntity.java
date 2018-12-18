@@ -1,6 +1,7 @@
 package com.main.common.base.entity;
 
 import com.baomidou.mybatisplus.annotation.IdType;
+import com.main.common.util.SnowFlakeIdGenerator;
 import lombok.Data;
 import com.baomidou.mybatisplus.annotation.TableId;
 
@@ -13,8 +14,8 @@ import java.util.Date;
 public class BasicEntity extends ParentEntity {
 
 	/** 主键ID **/
-	@TableId(value="id",type = IdType.ID_WORKER)
-	private Long id;
+	@TableId(value="id")
+	private Long id = new SnowFlakeIdGenerator(0,0).nextId();
 	/** 逻辑删除:1=未删除,2=已删除 **/
 	private Integer status;
 	/** 禁用状态:1=可用,2=禁用 **/

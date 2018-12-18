@@ -1,9 +1,8 @@
 package com.main.common.base.entity;
 
+import com.main.common.util.SnowFlakeIdGenerator;
 import lombok.Data;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 
@@ -15,8 +14,7 @@ public class BasicEntity extends ParentEntity {
 
 	/** 主键ID **/
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	private Long id = new SnowFlakeIdGenerator(0,0).nextId();
 	/** 逻辑删除:1=未删除,2=已删除 **/
 	private Integer status;
 	/** 禁用状态:1=可用,2=禁用 **/

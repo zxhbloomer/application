@@ -113,7 +113,7 @@ public class MyBatisPlusApplicationTest {
 		user1.setEmail("1198127035@qq.com");
 		user1.setName("梁金龙");
 		user1.setUsername("15277578023");
-		user1.setPassword("$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6");
+		user1.setPassword("$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6");//0
 		user1.setAccountNonExpired(1);
 		user1.setAccountNonLocked(1);
 		user1.setCredentialsNonExpired(1);
@@ -127,7 +127,7 @@ public class MyBatisPlusApplicationTest {
 		user2.setEmail("657603467@qq.com");
 		user2.setName("周杰伦");
 		user2.setUsername("13978561915");
-		user2.setPassword("$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6");
+		user2.setPassword("$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6");//0
 		user2.setAccountNonExpired(1);
 		user2.setAccountNonLocked(1);
 		user2.setCredentialsNonExpired(1);
@@ -141,7 +141,7 @@ public class MyBatisPlusApplicationTest {
 		user3.setEmail("1037331293@qq.com");
 		user3.setName("吴彦祖");
 		user3.setUsername("13978561241");
-		user3.setPassword("$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6");
+		user3.setPassword("$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6");//0
 		user3.setAccountNonExpired(1);
 		user3.setAccountNonLocked(1);
 		user3.setCredentialsNonExpired(1);

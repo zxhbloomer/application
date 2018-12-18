@@ -39,7 +39,10 @@ public class MainApplication {
 		Runnable run = () ->System.out.println("Im Runnable");
 
 		testStreamAndLambda();
+	}
 
+	public static void ppp(){
+		System.out.println("PPP");
 	}
 
 
