@@ -9,6 +9,17 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>jdk-news</artifactId>
+    <artifactId>java-demos</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>array-list-sort</module>
+        <module>function-interface</module>
+        <module>httpclient</module>
+        <module>array-list-stream</module>
+        <module>later8-datetimes</module>
+        <module>later8-httpclient</module>
+        <module>later8-thread-pool</module>
+    </modules>
+
 
 </project>

@@ -11,7 +11,7 @@ import java.util.List;
 public class BasicServiceImpl<M extends BasicMapper<T>,T extends BasicEntity> implements BasicService<T>{
 
 	@Autowired
-	private M baseMapper;
+	public M baseMapper;
 
 	@Override
 	public List<T> listAll() {

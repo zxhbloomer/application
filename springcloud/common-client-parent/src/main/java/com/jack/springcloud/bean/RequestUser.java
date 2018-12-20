@@ -19,7 +19,7 @@ public class RequestUser implements Serializable {
     private Date exp;
     /**用户权限组**/
     private String[] authorities;
-    /**此请求过来的ServiceName**/
+    /**发送此请求的服务名称(ServiceName)**/
     private String serviceName;
     /**Token**/
     private String accessToken;

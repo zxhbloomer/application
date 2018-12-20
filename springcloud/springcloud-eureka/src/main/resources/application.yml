@@ -25,11 +25,11 @@ spring:
 
 eureka:
   server:
-    enable-self-preservation: true #是否开启自我保护模式(最近一分钟接收到的续约次数小于阈值则关闭租约失效剔除)[服务及时剔除]
+    enable-self-preservation: false #是否开启自我保护模式(最近一分钟接收到的续约次数小于阈值则关闭租约失效剔除)[服务及时剔除]
     renewal-percent-threshold: 0.85 #指定每分钟需要收到的续约次数的阈值
     renewal-threshold-update-interval-ms: 900000 #指定updateRenewalThreshold定时任务的调度频率,来动态更新expectedNumberOfRenewsPerMin及numberOfRenewsPerMinThreshold值
     eviction-interval-timer-in-ms: 60000 #指定EvictionTask定时任务的调度频率,用于剔除过期的实例[服务及时剔除]
-    use-read-only-response-cache: true #是否使用只读的response-cache
+    use-read-only-response-cache: true #是否使用只读的response-cache[服务及时剔除]
     response-cache-update-interval-ms: 30000 #设置CacheUpdateTask 的调度时间间隔,用于从readWrit-CacheMap更新数据到readOnlyCacheMap.仅在use-read-only-response-cache为true的时候生效
     response-cache-auto-expiration-in-seconds: 180 #设置readWriteCacheMap的expireAfterWrite参数,指定写入多长时间后过期[服务及时剔除]
     peer-eureka-nodes-update-interval-ms: 600000 #指定peersUpdateTask调度的时间间隔,用于从配置文件刷新peerEurekaNodes节点的配置信息(eureka.client.serviceUrl相关的zone的配置)
@@ -44,7 +44,6 @@ eureka:
       expected-number-of-renews-per-min: 1 #指定每分钟需要收到的续约次数值,实际改值在其中被写死成 count*2,另外也会被更新
     hostname: localhost #这里使用localhost如果需要使用其他的配置需要在host文件更改映射
     instance-id: ${spring.application.name}:${server.port}
-
     secure-port: ${server.port}
     secure-port-enabled: false
     home-page-url: https://${eureka.instance.hostname}:${server.port}/

@@ -4,7 +4,7 @@ spring:
   application:
     name: service-client-order
   rabbitmq: #Config刷新总线BUS需要连接RabbitMQ
-    host: server1
+    host: 39.108.82.13
     port: 5672
     username: guest
     password: guest

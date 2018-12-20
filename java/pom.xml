@@ -11,12 +11,9 @@
 
     <modules>
         <module>common</module>
-        <module>demo-function-interface</module>
-        <module>demo-httpclient</module>
         <module>util-encrypt-rsa</module>
         <module>jdk-news</module>
-        <module>demo-array-list-sort</module>
-        <module>demo-array-list-stream</module>
+        <module>java-demos</module>
     </modules>
 
     <dependencies>
@@ -27,6 +24,19 @@
             <scope>provided</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>11</source>
+                    <target>11</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
 
 </project>
