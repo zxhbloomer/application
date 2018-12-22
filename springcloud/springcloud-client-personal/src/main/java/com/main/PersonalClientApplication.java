@@ -13,9 +13,6 @@ import org.springframework.context.annotation.ComponentScan;
  * turbine-stream:		http://localhost:9301/turbine.stream 			(放入熔断器页面的输入框里)
  * 注意必须在配置文件里面配置/actuator/hystrix.stream路径,这个页面默认是显示Loading的
  * 如果想要看到数据必须使用Feign去访问客户端才能看到数据
- *
- * 如果需要Zipkin的数据持久化到MySql的话需要在 Docker对server端给予参数进行配置
- * 命令:docker run -d -p 9411:9411 -e STORAGE_TYPE=mysql -e MYSQL_HOST=192.168.31.12 -e MYSQL_TCP_PORT=3306 -e MYSQL_DB=db_zipkin -e MYSQL_USER=root -e MYSQL_PASS=root -e zipkin.collector.rabbitmq.addresses=server1:5672 -e zipkin.collector.rabbitmq.username=demo -e zipkin.collector.rabbitmq.password=123456 openzipkin/zipkin
  */
 @SpringCloudApplication    //这个注解包括了开启熔断器和开启Client的注解
 @EnableHystrixDashboard    //熔断器的监控

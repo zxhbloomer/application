@@ -126,7 +126,7 @@ public class RedisService {
 		Boolean b1 = stringRedisTemplate.delete(key1);
 		Boolean b2 = stringRedisTemplate.delete(key2);
 		Boolean b3 = stringRedisTemplate.delete(key3);
-
+		System.out.println();
 	}
 
 

@@ -5,29 +5,8 @@ spring:
       uri: http://server1:9200  #ConfigServer地址
       name: config-client-dev    #方式1:通过name指定文件(yml和properties都可以读取到)
 #      profile: dev               #方式2:通过profile指定文件,[applicationName + profile].[yml || properties] == PS:建议把config的配置放在bootstrap里面,不然可能无法读取到!!!
-  boot:
-    admin:
-      client:
-        url: http://server1:9400  #SpringBootAdminServer
-  zipkin:
-    base-url: http://server1:9411/  #注意在新版本必须把Lookback设置为Custom!!!
-    sender:
-      type: web #把数据发送到WEB端
-    locator:
-      discovery:
-        enabled: true # 支持通过服务发现来定位host name：
-  sleuth:
-    web:
-      client:
-        enabled: true #链路配置
-    sampler:
-      probability: 1.0  # 将采样比例设置为 1.0，也就是全部都需要。默认是 0.1
 eureka:
   client:
-    security:
-      basic:
-        user: admin
-        password: 123
     #    availability-zones: "" #告知Client有哪些region及availability-zones,支持配置修改运行时生效
     filter-only-up-instances: true #是否过滤出InstanceStatus为UP的实例
     region: "us-east-1" #指定该应用实例所在的region,AWS datacenters适用
@@ -47,11 +26,8 @@ eureka:
     eureka-server-total-connections: 200 #连接池最大活动连接数[MaxTotal](EurekaClientHttp)
     eureka-server-total-connections-per-host: 50 #每个host能使用的最大连接数[DefaultMax-PerRoute](EurekaClientHttp)
     eureka-connection-idle-timeout-seconds: 30 #连接池中连接的空闲时间[connectionIdleTimeout](EurekaClientHttp)
-    serviceUrl:
-      defaultZone: https://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@server1:9100/eureka/
   instance:
     #    metadata-map: "" #指定应用实例的元数据信息
     prefer-ip-address: false #是否优先使用ip来代替host name作为实例的hostName字段值
     lease-expiration-duration-in-seconds: 90 #指定Eureka Client间隔多久需要向Eureka Server发送心跳来告知EurekaServer该实例还存活
     lease-renewal-interval-in-seconds: 30 #EurekaClient想EurekaServer发送心跳的时间间隔
-    instance-id: ${spring.application.name}:${server.port} #生成随机数${random.value}

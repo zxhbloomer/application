@@ -1,9 +1,8 @@
-package com.config.common.config;
+package com.config;
 
 import com.netflix.discovery.DiscoveryClient;
 import com.netflix.discovery.shared.transport.jersey.EurekaJerseyClientImpl;
 import org.apache.http.ssl.SSLContextBuilder;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -15,7 +14,7 @@ import java.security.NoSuchAlgorithmException;
 import java.security.cert.CertificateException;
 
 @Configuration
-public class CommonConfig {
+public class EurekaClientHttpsConfig {
 
     private static final String keyStoreFileName = "client.p12";
     private static final String keyStorePassword = "client";
@@ -34,7 +33,6 @@ public class CommonConfig {
         DiscoveryClient.DiscoveryClientOptionalArgs args = new DiscoveryClient.DiscoveryClientOptionalArgs();
         args.setEurekaJerseyClient(builder.build());
         return args;
-
     }
 
 }

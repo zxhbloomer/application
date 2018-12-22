@@ -3,11 +3,6 @@ server:
 spring:
   application:
     name: service-client-personal
-  rabbitmq: #Config刷新总线BUS需要连接RabbitMQ
-    host: 39.108.82.13
-    port: 5672
-    username: guest
-    password: guest
 feign:
 #  httpclient:
 #    enabled: false #使用HttpClient替代URLConnection
@@ -16,15 +11,12 @@ feign:
       default: #如果你的名称为default则为全局的配置
         requestInterceptors:
           - com.main.interceptor.CookieLoggerInterceptor
-          - com.main.interceptor.FeignTokenInterceptor
       github-client: #[对单个Feign进行配置]这里是@FeignClient里面的name
         connectTimeout: 50000 #连接超时时间
         readTimeout: 50000 #读取超时时间
         loggerLevel: full #配置Feign的日志级别
         requestInterceptors: #配置拦截器
           - com.main.interceptor.SimpleLoggerInterceptor
-  hystrix:
-    enabled: true #使熔断器接口方法实现方式起作用(OpenFeign自带Hystrix,但是默认没有打开)
   compression:  #[BUG]乱码了
     request:
       enabled: true
@@ -46,11 +38,6 @@ hystrix:  #熔断器配置
 #          strategy: SEMAPHORE #调整隔离策略,解决RequestInterceptor无法获取Request的问题(不推荐)
           thread:
             timeoutInMilliseconds: 600000 #Hystrix 配置参数(目前只能全局配置)，例如说 Hystrix 执行超时时间(可解决FeignTimeout超时,以及第一次请求超时的问题)
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*" #2.0版本server或client必须加上此配置,不然无法通过这个/actuator/bus-refresh刷新,还可以开启hystrix.stream
 turbine:
   appConfig: service-client-personal,service-client-order,service-client-consumer  #配置需要监控的服务名(spring.application.name)
   clusterNameExpression: new String("default") #默认为服务名的集群,此时用默认即可

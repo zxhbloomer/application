@@ -118,8 +118,4 @@ public class PersonalController {
 		}
 	}
 
-	public String defaultPersonal(String name){
-		return "你的名字不叫jack!!!";
-	}
-
 }

@@ -3,16 +3,6 @@ server:
 spring:
   application:
     name: service-route-gateway
-  rabbitmq: #Config刷新总线BUS需要连接RabbitMQ
-    host: 39.108.82.13
-    port: 5672
-    username: guest
-    password: guest
-  redis: #限流所需
-    host: 39.108.82.13
-    password: mypassword
-    port: 6379
-    timeout: 5000
   cloud:
     gateway:
       discovery:
@@ -35,22 +25,18 @@ spring:
                 fallbackUri: forward:/fallback #即 fallback 对应的 uri，这里的 uri 仅支持forward: schemed 的
             - name: RequestRateLimiter #限流过滤器
               args:
-                key-resolver: "#{@remoteAddressKeyResolver}"   #SpEl表达式,表示Bean名称详细参见RemoteAddrKeyrESOLVER
+                key-resolver: "#{@remoteAddressKeyResolver}"   #SpEl表达式,表示Bean名称详细参见RemoteAddressKeyResolver
                 redis-rate-limiter.replenishRate: 1 #令牌桶填充平均速率，1秒/1个。
                 redis-rate-limiter.burstCapacity: 5 #令牌桶上限
-feign:
-  hystrix:
-    enabled: true #使熔断器接口方法实现方式起作用
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*" #2.0版本server或client必须加上此配置(开放所有端点),不然无法通过这个bus-refresh刷新
-#Hystrix 配置参数，目前只能全局配置，例如说 Hystrix 执行超时时间，配置如下 ：
+#Hystrix 执行超时时间
 hystrix:
   command:
     default:
       execution:
         isolation:
           thread:
-            timeoutInMilliseconds: 10000
+            timeoutInMilliseconds: 8000
+#Ribbon的超时时间
+ribbon:
+  ReadTimeout: 8000
+  ConnectTimeout: 8000

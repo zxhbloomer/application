@@ -10,7 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class SimpleLoggerInterceptor implements RequestInterceptor {
 
-
 	@Override
 	public void apply(RequestTemplate requestTemplate) {
 		log.info("GitHubFeign拦截器");

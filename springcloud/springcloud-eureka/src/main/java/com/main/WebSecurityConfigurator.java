@@ -20,7 +20,6 @@ public class WebSecurityConfigurator extends WebSecurityConfigurerAdapter {
 		 */
 //		super.configure(http);
 //		http.csrf().disable();//关闭ServerCSRF
-
 		/**
 		 * Bean方式配置开启HttpBasic方式验证
 		 */

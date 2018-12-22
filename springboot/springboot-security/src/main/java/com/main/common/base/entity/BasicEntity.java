@@ -15,7 +15,7 @@ public class BasicEntity extends ParentEntity {
 
 	/** 主键ID **/
 	@TableId(value="id")
-	private Long id = new SnowFlakeIdGenerator(0,0).nextId();
+	private Long id;
 	/** 逻辑删除:1=未删除,2=已删除 **/
 	private Integer status;
 	/** 禁用状态:1=可用,2=禁用 **/
@@ -28,5 +28,12 @@ public class BasicEntity extends ParentEntity {
 	private String createUserName;
 	/** 更新者 **/
 	private String updateUserName;
+	/** ID生成策略(雪花算法) */
+	private static final SnowFlakeIdGenerator snowFlakeIdGenerator = new SnowFlakeIdGenerator(0,0);
+
+	/** 生成一个ID */
+	public void generateId(){
+		this.id = snowFlakeIdGenerator.nextId();
+	}
 
 }

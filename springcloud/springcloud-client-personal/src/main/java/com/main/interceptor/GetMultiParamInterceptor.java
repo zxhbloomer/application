@@ -12,13 +12,15 @@ import org.springframework.util.StringUtils;
 import java.io.IOException;
 import java.util.*;
 
+/**
+ * 对Feign的Get请求进行封装改进,能在Feign使用Bean进行传输
+ */
 @Component
 @Slf4j
 public class GetMultiParamInterceptor implements RequestInterceptor {
 
     @Autowired
     private ObjectMapper objectMapper;
-
 
     @Override
     public void apply(RequestTemplate template) {

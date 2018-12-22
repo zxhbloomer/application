@@ -35,7 +35,6 @@ public class AdminServerApplication {
 		SpringApplication.run(AdminServerApplication.class);
 	}
 
-
 	@Configuration
 	public static class SecuritySecureConfig extends WebSecurityConfigurerAdapter {
 		private final String adminContextPath;

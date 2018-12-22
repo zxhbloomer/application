@@ -45,7 +45,6 @@ public class OrderController{
 		return "{ Shopping Result (Two) : " + result + " }";
 	}
 
-
 	/**
 	 * Feign-Get请求多参数传递
 	 */

@@ -1,6 +1,6 @@
-	package com.main.filter;
+package com.main.filter;
 
-import com.main.feign.AuthorizationServerServiceFeign;
+import com.main.feign.AuthorizationServerService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,6 +9,7 @@ import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.cloud.gateway.route.Route;
 import org.springframework.cloud.gateway.support.ServerWebExchangeUtils;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
@@ -22,8 +23,10 @@ import java.util.Random;
 @Component
 public class AuthFilter implements GlobalFilter {
 
+	public static final String HEADER_AUTH = "Authorization";
+
 	@Autowired
-	AuthorizationServerServiceFeign authFeign;
+	AuthorizationServerService authFeign;
 
 	@Value("${eureka.instance.instance-id}")
 	public String instanceId;
@@ -35,7 +38,7 @@ public class AuthFilter implements GlobalFilter {
     	ServerHttpRequest request = exchange.getRequest();
     	HttpHeaders header = request.getHeaders();
 
-    	String token = header.getFirst(JwtUtil.HEADER_AUTH);
+    	String token = header.getFirst(HEADER_AUTH);
 
 		Map<String,?> userMap = authFeign.checkToken(token);
 		ServerHttpRequest.Builder mutate = request.mutate();
@@ -62,7 +65,9 @@ public class AuthFilter implements GlobalFilter {
         	mutate.header("x-user-serviceName",instanceId); //uri.getHost()
         	log.info("HostName:{}",uri.getHost());
     	}else {
-    		throw new PermissionException("authentication failed  please check");
+    		//或者抛出PermissionException
+			exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+			return exchange.getResponse().setComplete();
     	}
 
     	ServerHttpRequest buildRequest =  mutate.build();

@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Local
-Source Server Version : 50720
-Source Host           : 127.0.0.1:3306
-Source Database       : demo
+Source Server         : MyServer
+Source Server Version : 50718
+Source Host           : 39.108.82.13:3306
+Source Database       : test
 
 Target Server Type    : MYSQL
-Target Server Version : 50720
+Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-11-05 17:19:56
+Date: 2018-12-21 09:35:15
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -20,7 +20,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_resource`;
 CREATE TABLE `sys_resource` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(18) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
   `enabled` tinyint(1) DEFAULT '1',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
@@ -40,24 +40,24 @@ CREATE TABLE `sys_resource` (
 -- ----------------------------
 -- Records of sys_resource
 -- ----------------------------
-INSERT INTO `sys_resource` VALUES ('1055282385240821761', '1', '1', '2018-10-25 10:18:21', null, null, null, '100', '1', null, '系统管理', '系统基础基础功能', '#', 'fa system');
-INSERT INTO `sys_resource` VALUES ('1055282385572171777', '1', '1', '2018-10-25 10:18:21', null, null, null, '1000', '2', '1055282385240821761', '资源菜单管理', '系统菜单资源设置', 'sysResource', 'fa resource');
-INSERT INTO `sys_resource` VALUES ('1055282385580560385', '1', '1', '2018-10-25 10:18:21', null, null, null, '2000', '2', '1055282385240821761', '角色管理', '角色控制', 'sysRole', 'fa role');
-INSERT INTO `sys_resource` VALUES ('1055282385580560386', '1', '1', '2018-10-25 10:18:21', null, null, null, '3000', '2', '1055282385240821761', '用户管理', '用户管理', 'sysUser', 'fa user');
+INSERT INTO `sys_resource` VALUES ('524660268899237888', '1', '1', '2018-12-18 10:52:36', null, null, null, '100', '1', null, '系统管理', '系统基础基础功能', '#', 'fa system');
+INSERT INTO `sys_resource` VALUES ('524660269687767040', '1', '1', '2018-12-18 10:52:37', null, null, null, '1000', '2', '524660268899237888', '资源菜单管理', '系统菜单资源设置', 'sysResource', 'fa resource');
+INSERT INTO `sys_resource` VALUES ('524660270312718336', '1', '1', '2018-12-18 10:52:37', null, null, null, '2000', '2', '524660268899237888', '角色管理', '角色控制', 'sysRole', 'fa role');
+INSERT INTO `sys_resource` VALUES ('524660270363049984', '1', '1', '2018-12-18 10:52:37', null, null, null, '3000', '2', '524660268899237888', '用户管理', '用户管理', 'sysUser', 'fa user');
 
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Local
-Source Server Version : 50720
-Source Host           : 127.0.0.1:3306
-Source Database       : demo
+Source Server         : MyServer
+Source Server Version : 50718
+Source Host           : 39.108.82.13:3306
+Source Database       : test
 
 Target Server Type    : MYSQL
-Target Server Version : 50720
+Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-11-05 17:20:05
+Date: 2018-12-21 09:35:21
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -67,7 +67,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role`;
 CREATE TABLE `sys_role` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(18) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
   `enabled` tinyint(1) DEFAULT '1',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
@@ -83,22 +83,22 @@ CREATE TABLE `sys_role` (
 -- ----------------------------
 -- Records of sys_role
 -- ----------------------------
-INSERT INTO `sys_role` VALUES ('1055282385630892033', '1', '1', '2018-10-25 10:18:21', 'admin', '2018-10-25 10:19:10', null, '测试用户', '测试', 'ROLE_TEST');
-INSERT INTO `sys_role` VALUES ('1055282385647669249', '1', '1', '2018-10-25 10:18:21', 'admin', '2018-10-25 10:19:12', null, '管理员', '超级管理员', 'ROLE_ADMIN');
+INSERT INTO `sys_role` VALUES ('524660270589542400', '1', '1', '2018-12-18 10:52:37', null, null, null, '测试用户', '测试', 'ROLE_TEST');
+INSERT INTO `sys_role` VALUES ('524660270816034816', '1', '1', '2018-12-18 10:52:37', null, null, null, '管理员', '超级管理员', 'ROLE_ADMIN');
 
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Local
-Source Server Version : 50720
-Source Host           : 127.0.0.1:3306
-Source Database       : demo
+Source Server         : MyServer
+Source Server Version : 50718
+Source Host           : 39.108.82.13:3306
+Source Database       : test
 
 Target Server Type    : MYSQL
-Target Server Version : 50720
+Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-11-05 17:20:10
+Date: 2018-12-21 09:35:31
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -108,7 +108,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user`;
 CREATE TABLE `sys_user` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(18) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
   `enabled` tinyint(1) DEFAULT '1',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
@@ -131,22 +131,23 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1055282385664446465', '1', '1', '2018-10-25 10:18:21', 'admin', '2018-11-05 16:09:03', null, '15277578023', '$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6', '梁金龙', '1198127035@qq.com', '2018-11-05 16:09:04', '2018-10-25 10:18:22', '172.20.10.3', '1', '1', '1');
-INSERT INTO `sys_user` VALUES ('1055282385693806594', '1', '1', '2018-10-25 10:18:21', 'admin', null, null, '13978561915', '$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6', '周杰伦', '657603467@qq.com', '2018-10-25 10:18:22', '2018-10-25 10:18:22', '10.26.66.125', '1', '1', '1');
-INSERT INTO `sys_user` VALUES ('1055282385710583810', '1', '1', '2018-10-25 10:18:21', 'admin', null, null, '13978561241', '$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6', '吴彦祖', '1037331293@qq.com', '2018-10-25 10:18:22', '2018-10-25 10:18:22', '115.66.40.125', '1', '1', '1');
+INSERT INTO `sys_user` VALUES ('524660271021555712', '1', '1', '2018-12-18 10:52:37', 'admin', '2018-12-18 11:08:16', null, '15277578023', '$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6', '梁金龙', '1198127035@qq.com', '2018-12-18 11:08:15', '2018-12-18 10:52:36', '192.168.31.12', '1', '1', '1');
+INSERT INTO `sys_user` VALUES ('524660271269019648', '1', '1', '2018-12-18 10:52:37', 'admin', null, null, '13978561915', '$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6', '周杰伦', '657603467@qq.com', '2018-12-18 10:52:36', '2018-12-18 10:52:36', '10.26.66.125', '1', '1', '1');
+INSERT INTO `sys_user` VALUES ('524660271478734848', '1', '1', '2018-12-18 10:52:37', 'admin', null, null, '13978561241', '$2a$10$yw/jduKFFT9PNpiaKZ.s6.gkAh33BBFov2ERElVhXuwFdNxplfkh6', '吴彦祖', '1037331293@qq.com', '2018-12-18 10:52:36', '2018-12-18 10:52:36', '115.66.40.125', '1', '1', '1');
+
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Local
-Source Server Version : 50720
-Source Host           : 127.0.0.1:3306
-Source Database       : demo
+Source Server         : MyServer
+Source Server Version : 50718
+Source Host           : 39.108.82.13:3306
+Source Database       : test
 
 Target Server Type    : MYSQL
-Target Server Version : 50720
+Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-11-05 17:20:15
+Date: 2018-12-21 09:35:26
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -156,7 +157,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_role_resource`;
 CREATE TABLE `sys_role_resource` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(18) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
   `enabled` tinyint(1) DEFAULT '1',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
@@ -176,24 +177,24 @@ CREATE TABLE `sys_role_resource` (
 -- ----------------------------
 -- Records of sys_role_resource
 -- ----------------------------
-INSERT INTO `sys_role_resource` VALUES ('1055282385731555330', '1', '1', '2018-10-25 10:18:21', 'admin', null, null, '1055282385630892033', '1055282385572171777', '15');
-INSERT INTO `sys_role_resource` VALUES ('1055282385752526850', '1', '1', '2018-10-25 10:18:21', 'admin', null, null, '1055282385630892033', '1055282385580560385', '15');
-INSERT INTO `sys_role_resource` VALUES ('1055282385769304066', '1', '1', '2018-10-25 10:18:21', 'admin', null, null, '1055282385630892033', '1055282385580560386', '15');
-INSERT INTO `sys_role_resource` VALUES ('1055282385794469889', '1', '1', '2018-10-25 10:18:21', 'admin', null, null, '1055282385630892033', '1055282385240821761', '15');
+INSERT INTO `sys_role_resource` VALUES ('524660271680061440', '1', '1', '2018-12-18 10:52:37', 'admin', null, null, '524660270589542400', '524660269687767040', '15');
+INSERT INTO `sys_role_resource` VALUES ('524660271931719680', '1', '1', '2018-12-18 10:52:37', 'admin', null, null, '524660270589542400', '524660270312718336', '15');
+INSERT INTO `sys_role_resource` VALUES ('524660272120463360', '1', '1', '2018-12-18 10:52:37', 'admin', null, null, '524660270589542400', '524660270363049984', '15');
+INSERT INTO `sys_role_resource` VALUES ('524660272330178560', '1', '1', '2018-12-18 10:52:37', 'admin', null, null, '524660270589542400', '524660268899237888', '15');
 
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : Local
-Source Server Version : 50720
-Source Host           : 127.0.0.1:3306
-Source Database       : demo
+Source Server         : MyServer
+Source Server Version : 50718
+Source Host           : 39.108.82.13:3306
+Source Database       : test
 
 Target Server Type    : MYSQL
-Target Server Version : 50720
+Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-11-05 17:20:20
+Date: 2018-12-21 09:35:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -203,7 +204,7 @@ SET FOREIGN_KEY_CHECKS=0;
 -- ----------------------------
 DROP TABLE IF EXISTS `sys_user_role`;
 CREATE TABLE `sys_user_role` (
-  `id` bigint(20) NOT NULL,
+  `id` bigint(18) NOT NULL,
   `status` tinyint(1) DEFAULT '1',
   `enabled` tinyint(1) DEFAULT '1',
   `create_time` datetime DEFAULT CURRENT_TIMESTAMP,
@@ -222,6 +223,6 @@ CREATE TABLE `sys_user_role` (
 -- ----------------------------
 -- Records of sys_user_role
 -- ----------------------------
-INSERT INTO `sys_user_role` VALUES ('1055282385811247106', '1', '1', '2018-10-25 10:18:21', 'admin', null, null, '1055282385630892033', '1055282385664446465');
-INSERT INTO `sys_user_role` VALUES ('1055282385832218625', '1', '1', '2018-10-25 10:18:21', 'admin', null, null, '1055282385647669249', '1055282385693806594');
-INSERT INTO `sys_user_role` VALUES ('1055282385848995841', '1', '1', '2018-10-25 10:18:21', 'admin', null, null, '1055282385647669249', '1055282385710583810');
+INSERT INTO `sys_user_role` VALUES ('524660272586031104', '1', '1', '2018-12-18 10:52:37', 'admin', null, null, '524660270589542400', '524660271021555712');
+INSERT INTO `sys_user_role` VALUES ('524660272816717824', '1', '1', '2018-12-18 10:52:37', 'admin', null, null, '524660270816034816', '524660271269019648');
+INSERT INTO `sys_user_role` VALUES ('524660273013850112', '1', '1', '2018-12-18 10:52:37', 'admin', null, null, '524660270816034816', '524660271478734848');

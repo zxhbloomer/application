@@ -1,7 +1,6 @@
 package com.main;
 
 
-import brave.sampler.Sampler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.cloud.client.SpringCloudApplication;
@@ -9,11 +8,9 @@ import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboar
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
-import reactor.core.publisher.Mono;
 
 @SpringCloudApplication    //这个注解包括了开启熔断器和开启Client的注解
 @EnableHystrixDashboard    //熔断器的监控
@@ -21,6 +18,7 @@ import reactor.core.publisher.Mono;
 @ComponentScan(value = {"com.jack.springcloud","com.main","com.config"}) //扫描一些公共的配置(还要把自己也扫进来哦)
 @RestController
 public class OrderClientApplication {
+
 	public static void main(String[] args){
 		SpringApplication.run(OrderClientApplication.class);
 	}
@@ -31,11 +29,6 @@ public class OrderClientApplication {
 	@Bean
 	public RestTemplate getRestTemplate(){
 		return new RestTemplate();
-	}
-
-	@Bean
-	public Sampler defaultSampler() {
-		return Sampler.ALWAYS_SAMPLE;
 	}
 
 	@RequestMapping("/orderTow")
@@ -49,7 +42,5 @@ public class OrderClientApplication {
 		System.err.println("Method : OrderOne");
 		return restTemplate.getForObject("http://SERVICE-CLIENT-PERSONAL/personTow",String.class);
 	}
-
-
 
 }

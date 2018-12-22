@@ -1,7 +1,5 @@
 package com.main.controller;
 
-import brave.sampler.Sampler;
-
 import com.main.feign.GitHubFeignService;
 import com.main.feign.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,15 +21,9 @@ public class HomeController {
     @Autowired
     OrderService orderService;
 
-
     @Bean
     public RestTemplate getRestTemplate(){
         return new RestTemplate();
-    }
-
-    @Bean
-    public Sampler defaultSampler() {
-        return Sampler.ALWAYS_SAMPLE;
     }
 
     @RequestMapping("/personOne")
@@ -52,6 +44,5 @@ public class HomeController {
     public ResponseEntity<byte[]> gitHubTest(){
         return helloFeignService.searchRepo("spring-cloud-dubbo");
     }
-
 
 }

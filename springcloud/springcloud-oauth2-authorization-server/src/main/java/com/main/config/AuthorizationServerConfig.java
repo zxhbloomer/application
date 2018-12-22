@@ -3,9 +3,6 @@ package com.main.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.connection.RedisStandaloneConfiguration;
-import org.springframework.data.redis.connection.jedis.JedisConnectionFactory;
-import org.springframework.data.redis.connection.lettuce.LettuceClientConfiguration;
 import org.springframework.data.redis.connection.lettuce.LettuceConnectionFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
@@ -13,14 +10,9 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
-import org.springframework.security.oauth2.provider.endpoint.CheckTokenEndpoint;
-import org.springframework.security.oauth2.provider.token.DefaultAccessTokenConverter;
 import org.springframework.security.oauth2.provider.token.TokenEnhancer;
 import org.springframework.security.oauth2.provider.token.TokenEnhancerChain;
-import org.springframework.security.oauth2.provider.token.TokenStore;
-import org.springframework.security.oauth2.provider.token.store.InMemoryTokenStore;
 import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenConverter;
-import org.springframework.security.oauth2.provider.token.store.JwtTokenStore;
 import org.springframework.security.oauth2.provider.token.store.redis.RedisTokenStore;
 
 import java.util.Arrays;
@@ -59,7 +51,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 //		//配置AuthorizationService tokenService
 //		endpoints
-//				.tokenStore(new InMemoryTokenStore())
+//				.redisTokenStore(new InMemoryTokenStore())
 //				.accessTokenConverter(accessTokenConverter())
 //				.authenticationManager(authenticationManager)
 //				.reuseRefreshTokens(false);//这里配置了不允许刷新令牌
@@ -68,7 +60,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		 */
 		TokenEnhancerChain tokenEnhancerChain = new TokenEnhancerChain();
 		tokenEnhancerChain.setTokenEnhancers(Arrays.asList(tokenEnhancer()));//这里添加了两个(JwtAccessTokenConverter)
-        endpoints.tokenStore(tokenStore())
+        endpoints.tokenStore(redisTokenStore())
 				.tokenEnhancer(tokenEnhancerChain)
                 .authenticationManager(authenticationManager);
 	}
@@ -93,9 +85,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
 	/**
 	 * Token存储在哪里[InMemoryTokenStore/JdbcTokenStore/RedisTokenStore],JwtTokenStore把Token里面包含的信息存储到了Token里面返回给用户
+	 * 这里最好使用父类型TokenStore好一点
 	 */
 	@Bean
-	public TokenStore tokenStore() {
+	public RedisTokenStore redisTokenStore() {
 //		return new JwtTokenStore(accessTokenConverter());		//使用JWT存储(非JwtTokenStore可以使用或者不使用JwtAccessTokenConverter,但是JwtTokenStore必须使用)
 		return new RedisTokenStore(lettuceConnectionFactory);	//使用Redis存储
 	}

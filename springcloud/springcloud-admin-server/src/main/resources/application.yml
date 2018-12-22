@@ -7,16 +7,3 @@ spring:
     user:
       name: "user"          #这里在AdminServer端设置了账号和密码
       password: "password"
-  rabbitmq:
-    host: 39.108.82.13
-    port: 5672
-    username: guest
-    password: guest
-feign:
-  hystrix:
-    enabled: true
-management:
-  endpoints:
-    web:
-      exposure:
-        include: "*"
