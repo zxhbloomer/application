@@ -63,7 +63,7 @@ public class GatewayConfig {
 	 */
 	@Bean
 	public RateLimitByIpGatewayFilter rateLimitByIpGatewayFilter(){
-		//令牌桶算法:添加限流filter这里指定了 bucket 的容量为 10000 且每60秒会补充 1 个 Token。
+		//令牌桶算法:添加限流filter这里指定了 bucket 的容量为 10 且每60秒会补充 1 个 Token。
 		return new RateLimitByIpGatewayFilter(10,1, Duration.ofSeconds(60));
 	}
 }

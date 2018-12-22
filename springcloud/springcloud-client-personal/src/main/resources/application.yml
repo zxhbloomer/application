@@ -41,15 +41,3 @@ hystrix:  #熔断器配置
 turbine:
   appConfig: service-client-personal,service-client-order,service-client-consumer  #配置需要监控的服务名(spring.application.name)
   clusterNameExpression: new String("default") #默认为服务名的集群,此时用默认即可
-#turbine集群配置
-#turbine:
-#  app-config: service-client-personal,service-client-order,service-client-consumer  #需要监控的服务名(Eureka的name)
-#  aggregator:
-#    cluster-config: one,two #需要监控的服务集群名
-#  cluster-name-expression: metadata['cluster']
-#  combine-host: true
-#  instanceUrlSuffix:
-#    one: actuator/hystrix.stream    #key为clusterConfig的集群名字，默认为default
-#    two: actuator/hystrix.stream    #value为集群的hystrix监控url后缀，springboot2.0默认为actuator/hystrix.stream
-
-

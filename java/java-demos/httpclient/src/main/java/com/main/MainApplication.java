@@ -14,7 +14,7 @@ import java.util.concurrent.Executors;
 public class MainApplication {
 
 	private static Integer SUM = 0 ;
-	private static final String ADDRESS = "http://localhost:9501/service/indent/order/receiverGoods?goodsName=iPhone&token=123456789";
+	private static final String ADDRESS = "http://localhost:9501/service/user/personal/buyGoods?goodsName=iPhone";
 
 	public static void main(String[] args) throws Exception{
 		ExecutorService exec = Executors.newFixedThreadPool(20);
@@ -28,8 +28,6 @@ public class MainApplication {
 				}
 			});
 		}
-
-
 	}
 
 	public static void doGet() throws Exception{
@@ -37,6 +35,7 @@ public class MainApplication {
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		//创建一个Get对象
 		HttpGet get = new HttpGet(ADDRESS);
+		get.setHeader("Authorization","520becc9-fc9f-4d30-9de8-4324899dc100");
 
 		for(int i=0;i<1000000;i++){
 			//执行请求
