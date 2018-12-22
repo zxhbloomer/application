@@ -1,16 +1,16 @@
 package com.main.entity;
 
-import com.baomidou.mybatisplus.annotation.TableField;
-import com.main.common.base.entity.BasicEntity;
+import com.main.common.base.entity.SystemBaseEntity;
 import lombok.Data;
 
+import javax.persistence.Transient;
 import java.util.Date;
 
 /**
  * 系统用户表
  */
 @Data
-public class SysUser extends BasicEntity {
+public class SysUser extends SystemBaseEntity {
 
 	/** 用户名 **/
 	private String username;
@@ -33,10 +33,10 @@ public class SysUser extends BasicEntity {
 	/** 是否锁定 **/
 	private Boolean accountNonLocked;
 
-	@TableField(exist = false)
+	@Transient
 	/** 权限名称 **/
 	private String roleName;
-	@TableField(exist = false)
+	@Transient
 	/** 权限ID **/
 	private Long roleId;
 

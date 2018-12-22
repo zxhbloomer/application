@@ -1,6 +1,6 @@
 package com.main.entity;
 
-import com.main.common.base.entity.BasicEntity;
+import com.main.common.base.entity.SystemBaseEntity;
 import lombok.Data;
 
 import javax.persistence.Transient;
@@ -10,7 +10,7 @@ import java.util.Date;
  * 系统用户表
  */
 @Data
-public class SysUser extends BasicEntity {
+public class SysUser extends SystemBaseEntity {
 
 	/** 用户名 **/
 	private String username;

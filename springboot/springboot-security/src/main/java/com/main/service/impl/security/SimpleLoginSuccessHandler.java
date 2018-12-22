@@ -14,7 +14,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Slf4j
@@ -33,7 +32,7 @@ public class SimpleLoginSuccessHandler implements AuthenticationSuccessHandler {
         user.setLastLoginTime(new Date());
         user.setLoginIp(NetworkUtils.getIpAddr(httpServletRequest));
         try {
-            sysUsersService.updateById(user);
+            sysUsersService.updateByIdSelective(user);
         } catch (Exception e) {
             e.printStackTrace();
         }

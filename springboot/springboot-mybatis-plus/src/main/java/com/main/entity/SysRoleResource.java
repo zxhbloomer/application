@@ -1,13 +1,13 @@
 package com.main.entity;
 
-import com.main.common.base.entity.BasicEntity;
+import com.main.common.base.entity.SystemBaseEntity;
 import lombok.Data;
 
 /**
  * 权限映射资源表
  */
 @Data
-public class SysRoleResource extends BasicEntity {
+public class SysRoleResource extends SystemBaseEntity {
 
 	/** 角色ID **/
 	private Long roleId;

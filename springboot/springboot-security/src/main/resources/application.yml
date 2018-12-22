@@ -16,10 +16,9 @@ spring:
         max-wait: -1 # 连接池最大阻塞等待时间（使用负值表示没有限制） 默认 -1
         max-idle: 8 #连接池中的最大空闲连接 默认 8
         max-active: 8 #连接池最大连接数（使用负值表示没有限制） 默认 8
-mybatis-plus:
-  mapper-locations: classpath*:/mapper/**Mapper.xml
-  type-aliases-package: com.main.entity
-  configuration:
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #YML配置打印SQL
+mybatis:  #配置为多数据源的时候这些配置需要在每个数据源里面单独配置
+  type-aliases-package: com.main.entity.*
+  mapper-locations: classpath*:mapper/**Mapper.xml
+  config-location: classpath:mybatis/mybatis-config.xml
 server:
   port: 9003

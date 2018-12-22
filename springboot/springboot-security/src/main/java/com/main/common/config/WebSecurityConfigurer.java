@@ -65,7 +65,7 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
     }
     @Override
     public void configure(WebSecurity web) throws Exception {
-        //解决静态资源被拦截的问题
+        //Security解决静态资源被拦截的问题
         web.ignoring().antMatchers("/static/**");
     }
 

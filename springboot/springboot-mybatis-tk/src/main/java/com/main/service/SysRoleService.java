@@ -1,7 +1,7 @@
 package com.main.service;
 
-import com.main.common.base.service.BasicService;
+import com.main.common.base.service.BaseService;
 import com.main.entity.SysRole;
 
-public interface SysRoleService extends BasicService<SysRole> {
+public interface SysRoleService extends BaseService<SysRole> {
 }

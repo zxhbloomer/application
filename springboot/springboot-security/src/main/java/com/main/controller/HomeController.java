@@ -1,6 +1,5 @@
 package com.main.controller;
 
-import com.baomidou.mybatisplus.core.toolkit.StringUtils;
 import com.main.common.config.RedisService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,8 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
+
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -48,7 +46,7 @@ public class HomeController{
      */
     @RequestMapping(value = {"/login","/"})
     public String login(String error, Model model){
-        if(StringUtils.isNotEmpty(error)&&error.equals("true")){ model.addAttribute("loginError",true); }
+        if(error != null && error.length() <0 &&error.equals("true")){ model.addAttribute("loginError",true); }
         return "login";
     }
 

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -24,12 +25,19 @@ SecurityUserDetailService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        SysUsersVo sysUsersVo = userService.loadByUsername(username);
-        if(sysUsersVo==null) throw new UsernameNotFoundException("用户名不存在");
+        SysUsersVo vo = userService.loadByUsername(username);
+        if(vo==null) throw new UsernameNotFoundException("用户名不存在");
         Collection<GrantedAuthority> authorities = new ArrayList<>();
-        GrantedAuthority authoritie = new SimpleGrantedAuthority(sysUsersVo.getRoles());
-        authorities.add(authoritie);
-        SecurityUserDetails securityUserDetails = new SecurityUserDetails(authorities, sysUsersVo.getPassword(), sysUsersVo.getUsername(), sysUsersVo.getAccountNonExpired(), sysUsersVo.getAccountNonLocked(),  sysUsersVo.getCredentialsNonExpired(), sysUsersVo.getEnabled(),sysUsersVo.getId());
-        return securityUserDetails;
+        authorities.add(new SimpleGrantedAuthority(vo.getRoles()));
+        SecurityUserDetails securityUserDetails2 = new SecurityUserDetails()
+                .setId(vo.getId())
+                .setUsername(vo.getUsername())
+                .setPassword(vo.getPassword())
+                .setAuthorities(authorities)
+                .setAccountNonExpired(vo.getAccountNonExpired())
+                .setAccountNonLocked(vo.getAccountNonLocked())
+                .setCredentialsNonExpired(vo.getCredentialsNonExpired())
+                .setEnabled(vo.getEnabled());
+        return securityUserDetails2;
     }
 }

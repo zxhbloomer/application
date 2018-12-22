@@ -9,12 +9,12 @@ import java.io.Serializable;
 public class SysUsersVo implements Serializable {
 
     private Long id;
-    private Integer enabled;
-    private Boolean accountNonExpired;
-    private Boolean credentialsNonExpired;
-    private Boolean accountNonLocked;
     private String username;
     private String password;
     private String roles;
+    private Boolean enabled;
+    private Boolean accountNonExpired;
+    private Boolean credentialsNonExpired;
+    private Boolean accountNonLocked;
 
 }

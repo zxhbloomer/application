@@ -1,14 +1,14 @@
 package com.main.common.base.service.impl;
 
 
-import com.main.common.base.entity.BasicEntity;
-import com.main.common.base.mapper.BasicMapper;
-import com.main.common.base.service.BasicService;
+import com.main.common.base.entity.BaseEntity;
+import com.main.common.base.mapper.TkMapper;
+import com.main.common.base.service.BaseService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
-public class BasicServiceImpl<M extends BasicMapper<T>,T extends BasicEntity> implements BasicService<T>{
+public class BaseServiceImpl<M extends TkMapper<T>,T extends BaseEntity> implements BaseService<T> {
 
 	@Autowired
 	public M baseMapper;
@@ -39,7 +39,7 @@ public class BasicServiceImpl<M extends BasicMapper<T>,T extends BasicEntity> im
 	}
 
 	@Override
-	public T getByPrimaryKey(Object o) {
+	public T getById(Object o) {
 		return baseMapper.selectByPrimaryKey(o);
 	}
 
@@ -59,7 +59,7 @@ public class BasicServiceImpl<M extends BasicMapper<T>,T extends BasicEntity> im
 	}
 
 	@Override
-	public int removeByPrimaryKey(Object o) {
+	public int removeById(Object o) {
 		return baseMapper.deleteByPrimaryKey(o);
 	}
 
@@ -69,12 +69,12 @@ public class BasicServiceImpl<M extends BasicMapper<T>,T extends BasicEntity> im
 	}
 
 	@Override
-	public int updateByPrimaryKeySelective(T t) {
+	public int updateByIdSelective(T t) {
 		return baseMapper.updateByPrimaryKeySelective(t);
 	}
 
 	@Override
-	public int updateByPrimaryKey(T t) {
+	public int updateById(T t) {
 		return baseMapper.updateByPrimaryKey(t);
 	}
 

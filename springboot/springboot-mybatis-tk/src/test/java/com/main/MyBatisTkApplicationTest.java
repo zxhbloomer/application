@@ -42,8 +42,6 @@ public class MyBatisTkApplicationTest {
 
 	private static final Random r = new Random();
 	private static final SnowFlakeIdGenerator s = new SnowFlakeIdGenerator(0,0);
-	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-mm-dd HH:mm:ss");
-
 
 	@Test
 	public void test01() throws Exception{
@@ -93,8 +91,8 @@ public class MyBatisTkApplicationTest {
 					person.setCreateUserName(Math.abs(r.nextLong())+  "");
 					person.setUpdateTime(randomDate("1997-01-01 10:10:10","3000-01-01 10:10:10"));
 					person.setUpdateUserName(Math.abs(r.nextLong()) + "");
-					person.setStatus(r.nextInt(10)%2+1);
-					person.setEnabled(r.nextInt(100)%2+1);
+					person.setStatus(false);
+					person.setEnabled(false);
 					manager.insert(person);
 				}
 			});
@@ -146,7 +144,8 @@ public class MyBatisTkApplicationTest {
 
 	@Test
 	public void testQuery(){
-		resourceService.listAll();
+		List<SysResource> list = resourceService.listAll();
+		System.out.println();
 	}
 
 }

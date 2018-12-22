@@ -14,5 +14,3 @@ spring:
 #  type-aliases-package: com.main.entity.*
 #  mapper-locations: classpath*:mapper/**Mapper.xml
 #  config-location: classpath:mybatis/mybatis-config.xml
-simple:
-  username: jack

@@ -1,13 +1,13 @@
 package com.main.entity;
 
-import com.main.common.base.entity.BasicEntity;
+import com.main.common.base.entity.SystemBaseEntity;
 import lombok.Data;
 
 /**
  *  系统资源表
  */
 @Data
-public class SysResource extends BasicEntity {
+public class SysResource extends SystemBaseEntity {
 
 	/** 资源排序号 **/
 	private Integer orderNo;
