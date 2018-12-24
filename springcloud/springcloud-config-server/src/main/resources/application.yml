@@ -17,7 +17,7 @@ spring:
       label: master #表示是哪一个分支
       server:
         git:
-          uri: https://github.com/1198127035/SpringCloudConfigRepository
+          uri: https://github.com/1198127035/config-repo
           search-paths: respo #表示读取SpringCloudConfigRepository项目,下面的respo文件下面的配置文件(可以设置其他的文件)
 encrypt:
   key: no # 对称加密，配置为no就需要启动时传入秘钥
