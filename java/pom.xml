@@ -14,6 +14,7 @@
         <module>util-encrypt-rsa</module>
         <module>jdk-news</module>
         <module>java-demos</module>
+        <module>jvm</module>
     </modules>
 
     <dependencies>
