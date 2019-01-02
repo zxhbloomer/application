@@ -19,6 +19,7 @@
         <module>later8-datetimes</module>
         <module>later8-httpclient</module>
         <module>later8-thread-pool</module>
+        <module>later8-thread-pool</module>
     </modules>
 
 
