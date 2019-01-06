@@ -2,7 +2,7 @@ spring:
   cloud:
     config:
       label: master
-      uri: http://server1:9200
+      uri: http://${CONFIG_SERVER_NAME}:${CONFIG_SERVER_PORT}
       name: config-client-dev
 eureka:
   client:

@@ -18,6 +18,7 @@
             <artifactId>bucket4j-core</artifactId>
             <version>4.0.0</version>
         </dependency>
+
         <!--Gateway所需 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>

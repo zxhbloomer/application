@@ -2,5 +2,5 @@ spring:
   cloud:
     config:
       label: master
-      uri: http://server1:9200  #ConfigServer地址
+      uri: http://${CONFIG_SERVER_NAME}:${CONFIG_SERVER_PORT}  #ConfigServer地址
       name: config-client-dev    #方式1:通过name指定文件(yml和properties都可以读取到)

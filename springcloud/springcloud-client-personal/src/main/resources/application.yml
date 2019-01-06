@@ -41,3 +41,9 @@ hystrix:  #熔断器配置
 turbine:
   appConfig: service-client-personal,service-client-order,service-client-consumer  #配置需要监控的服务名(spring.application.name)
   clusterNameExpression: new String("default") #默认为服务名的集群,此时用默认即可
+
+
+#logging:
+#  file: /usr/local/tomcat/service-client-personal/log/service-client-personal.log #配置日志的输出路径(Linux路径)
+#  level:
+#    root: debug  #SpringBoot应用调整输出级别

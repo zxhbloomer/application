@@ -1,15 +1,21 @@
 eureka:
   instance:
     instance-id: ${spring.application.name}:${server.port}
+    prefer-ip-address: true
   client:
     security:
       user: admin
       password: 123
     serviceUrl:
-      defaultZone: https://${eureka.client.security.user}:${eureka.client.security.password}@server1:9100/eureka/ #仅需要向集群中的某个EurekaServer注册即可
+      defaultZone: http://${eureka.client.security.user}:${eureka.client.security.password}@${EUREKA_SERVER_NAME}:${EUREKA_SERVER_PORT}/eureka/ #仅需要向集群中的某个EurekaServer注册即可
 server:
   port: 9200
 spring:
+  rabbitmq:
+    host: 39.108.82.13
+    port: 5672
+    username: guest
+    password: guest
   application:
     name: config-server-single
   cloud:
@@ -21,3 +27,14 @@ spring:
           search-paths: respo #表示读取SpringCloudConfigRepository项目,下面的respo文件下面的配置文件(可以设置其他的文件)
 encrypt:
   key: no # 对称加密，配置为no就需要启动时传入秘钥
+
+#BUS总线Server端总刷新
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      show-details: always
+

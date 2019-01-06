@@ -7,4 +7,4 @@ eureka:
         user: admin
         password: 123
     serviceUrl:
-      defaultZone: https://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@server1:9100/eureka/
+      defaultZone: http://${eureka.client.security.basic.user}:${eureka.client.security.basic.password}@${EUREKA_SERVER_NAME}:${EUREKA_SERVER_PORT}/eureka/

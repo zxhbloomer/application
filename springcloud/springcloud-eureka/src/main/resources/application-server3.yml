@@ -5,7 +5,7 @@ eureka:
     hostname: server3 #在host进行配置
   client:
     serviceUrl:
-      defaultZone: http://admin:123@server1:9101/eureka/,http://admin:456@server2:9102/eureka/,http://admin:789@server3:9103/eureka/
+      defaultZone: http://admin:123@eurekaserver1:9101/eureka/,http://admin:456@eurekaserver2:9102/eureka/,http://admin:789@eurekaserver3:9103/eureka/
 spring:
   application:
     name: server-cluster

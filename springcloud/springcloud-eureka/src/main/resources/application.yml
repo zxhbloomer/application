@@ -1,12 +1,12 @@
 #单个EurekaServer配置
 server:
   port: 9100
-  ssl:  #Https配置
-    enabled: true
-    key-store: classpath:server.p12
-    key-store-password: server
-    key-store-type: PKCS12
-    key-alias: server
+#  ssl:  #Https配置(加上此配置和EurekaClientHttpsConfig即可开启https)
+#    enabled: true
+#    key-store: classpath:server.p12
+#    key-store-password: server
+#    key-store-type: PKCS12
+#    key-alias: server
 spring:
   security:
 #    basic:
