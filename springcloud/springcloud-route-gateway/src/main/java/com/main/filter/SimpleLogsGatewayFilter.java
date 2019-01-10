@@ -1,19 +1,21 @@
 package com.main.filter;
 
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
+import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
+import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
 /**
- * 打印接口调用时间Filter(Bean局部)
+ * 打印接口调用时间Filter(Bean局部),这个GatewayFilter好像只能作用在Bean方式的配置上面....
  */
 @Slf4j
-public class ElapsedFilter implements GatewayFilter, Ordered {
+@Configuration
+public class SimpleLogsGatewayFilter implements GatewayFilter, Ordered {
 
 	private static final String ELAPSED_TIME_BEGIN = "elapsedTimeBegin";
 
@@ -31,7 +33,7 @@ public class ElapsedFilter implements GatewayFilter, Ordered {
 				Mono.fromRunnable(() -> {
 					Long startTime = exchange.getAttribute(ELAPSED_TIME_BEGIN);
 					if (startTime != null) {
-						log.info("[ONE]用户打印过滤器 : " + exchange.getRequest().getURI().getRawPath() + ": " + (System.currentTimeMillis() - startTime) + "ms");
+						log.info("SimpleLogs : " + exchange.getRequest().getURI().getRawPath() + ": " + (System.currentTimeMillis() - startTime) + "ms");
 					}
 				})
 				//Post End
@@ -41,5 +43,13 @@ public class ElapsedFilter implements GatewayFilter, Ordered {
 	@Override
 	public int getOrder() {
 		return Ordered.LOWEST_PRECEDENCE;
+	}
+
+	@Component
+	class SimpleLogsGatewayFilterFactory extends AbstractGatewayFilterFactory {
+		@Override
+		public GatewayFilter apply(Object config) {
+			return new SimpleLogsGatewayFilter();
+		}
 	}
 }

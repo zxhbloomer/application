@@ -13,6 +13,7 @@ import org.springframework.security.core.session.SessionInformation;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -79,72 +80,22 @@ public class HomeController{
         return "home";
     }
 
-    /**
-     * 特定IP地址可访问
-     */
-    @RequestMapping("/address")
+
+    @GetMapping("/anonymousPath")
     @ResponseBody
-    public String address(){
-        return "特定IP地址可访问";
+    public String anonymousPath(){
+        return "无须登录-所有人(登陆之后无法访问)";
+    }
+    @GetMapping("/permitAllPath")
+    @ResponseBody
+    public String permitAllPath(){
+        return "所有用户(无论登不登录都可访问)";
+    }
+    @GetMapping("/authenticatedPath")
+    @ResponseBody
+    public String authenticatedPath(){
+        return "登录后-所有用户(必须才可以访问)";
     }
 
-    /**
-     * 传入一个Session使这个Session过期
-     */
-    @RequestMapping("/getInfo")
-    @ResponseBody
-    public Object getInfo(String sessionId){
-//        BoundHashOperations<String, String, SessionInformation> s = template.boundHashOps(SESSIONIDS);
-//        BoundHashOperations<String, String, Set<String>> p = template.boundHashOps(PRINCIPALS);
-//
-////        Long sd = s.delete(sessionId);
-////        Long pd = p.delete("15277578023");
-//
-//        Set<String> sk =  s.keys();
-//        List<SessionInformation> sv = s.values();
-//
-//        Set<String> pk =  p.keys();
-//        List<Set<String>> pv = p.values();
-//
-//        Long ss = s.size();
-//        Long ps = p.size();
-//
-//        SessionInformation sg = s.get(sessionId);
-//        Set<String> pg = p.get("15277578023");
-//
-//        Set<String> keys = template.keys("*");
-//        Set<String> skeys = s.keys();
-//        Set<String> pkeys = p.keys();
 
-        return "Success";
-    }
-
-    @RequestMapping("/delete")
-    @ResponseBody
-    public Object delete(HttpServletRequest request){
-//        BoundHashOperations<String, String, SessionInformation> s = template.boundHashOps(SESSIONIDS);
-//        BoundHashOperations<String, String, Set<String>> p = template.boundHashOps(PRINCIPALS);
-//
-//        Long num1 = s.delete(sessionId);
-//        Long num2 = p.delete("15277578023");
-        String key1 = "spring:session:sessions:"+request.getSession().getId();
-        String key2 = "spring:session:sessions:expires:"+request.getSession().getId();
-        String key3 = "spring:session:index:org.springframework.session.FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME:15277578023";
-
-
-        BoundHashOperations<String, String, Set<String>> hp = redisTemplate.boundHashOps(PRINCIPALS);
-        BoundHashOperations<String, String, Set<String>> hs = redisTemplate.boundHashOps(SESSIONIDS);
-
-        Long num1 = hp.delete("15277578023");
-        Long num2 = hs.delete(request.getSession().getId());
-
-
-        Boolean b1 = stringRedisTemplate.delete(key1);
-        Boolean b2 = stringRedisTemplate.delete(key2);
-        Boolean b3 = stringRedisTemplate.delete(key3);
-
-
-
-        return "Delete";
-    }
 }

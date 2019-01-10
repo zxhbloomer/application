@@ -40,13 +40,13 @@ public class ElapsedGatewayFilterFactory extends AbstractGatewayFilterFactory<El
 						Long startTime = exchange.getAttribute(ELAPSED_TIME_BEGIN);
 						if (startTime != null) {
 							StringBuilder sb = new StringBuilder(exchange.getRequest().getURI().getRawPath())
-									.append(": ")
+									.append(" : ")
 									.append(System.currentTimeMillis() - startTime)
 									.append("ms");
 							if (config.isWithParams()) {
-								sb.append(" params:").append(exchange.getRequest().getQueryParams());
+								sb.append(" params : ").append(exchange.getRequest().getQueryParams());
 							}
-							log.info("[ONE]打印过滤器(配置在XML中) : " + sb.toString());
+							log.info("[Yml]全局打印过滤器 : " + sb.toString());
 						}
 					})
 			);

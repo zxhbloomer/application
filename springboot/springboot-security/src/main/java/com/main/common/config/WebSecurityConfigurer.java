@@ -49,8 +49,9 @@ public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 //                .expiredSessionStrategy(new SessionStrategy())   //Session过期时间策略
             .and().and()
             .authorizeRequests()
-            .antMatchers( "/error").permitAll() //(登录后) 所有 "用户" 可访问
-            .antMatchers("/home").anonymous() //(无须登录) 所有人 可访问
+            .antMatchers("/home","/anonymousPath").anonymous() //无须登录-所有人(登陆之后无法访问)
+            .antMatchers( "/error","/permitAllPath").permitAll() //所有用户
+            .antMatchers("/authenticatedPath").authenticated()//登录后-所有用户
             .anyRequest()
             .authenticated()
             .and()

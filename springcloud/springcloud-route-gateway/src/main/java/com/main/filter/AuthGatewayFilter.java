@@ -19,9 +19,12 @@ import java.net.URI;
 import java.util.Map;
 import java.util.Random;
 
-	@Slf4j
-@Component
-public class AuthFilter implements GlobalFilter {
+/**
+ * Token全局过滤器
+ */
+@Slf4j
+//@Component
+public class AuthGatewayFilter implements GlobalFilter {
 
 	public static final String HEADER_AUTH = "Authorization";
 
@@ -31,13 +34,19 @@ public class AuthFilter implements GlobalFilter {
 	@Value("${eureka.instance.instance-id}")
 	public String instanceId;
 
+
     @Override
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
     	Route gatewayUrl = exchange.getRequiredAttribute(ServerWebExchangeUtils.GATEWAY_ROUTE_ATTR);
     	URI uri = gatewayUrl.getUri();
     	ServerHttpRequest request = exchange.getRequest();
-    	HttpHeaders header = request.getHeaders();
 
+    	//不过滤api文档
+    	if(exchange.getRequest().getURI().getRawPath().endsWith("/v2/api-docs")){
+			return chain.filter(exchange);
+		}
+
+    	HttpHeaders header = request.getHeaders();
     	String token = header.getFirst(HEADER_AUTH);
 
 		Map<String,?> userMap = authFeign.checkToken(token);

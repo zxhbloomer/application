@@ -1,19 +1,20 @@
 package com.main.config;
 
-import com.main.filter.ElapsedFilter;
+import com.main.filter.SimpleLogsGatewayFilter;
 import com.main.filter.ElapsedGatewayFilterFactory;
+import com.main.filter.SwaggerHeaderGatewayFilter;
 import com.main.filter.RateLimitByIpGatewayFilter;
 import com.main.service.RemoteAddressKeyResolver;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
 import java.time.Duration;
+import static com.main.config.GatewayRouteEnum.*;
 
 @Configuration
 public class GatewayConfig {
-
 
 	/**
 	 * 配置RemoteAddressKeyResolver Bean 对象
@@ -32,30 +33,40 @@ public class GatewayConfig {
 		return new ElapsedGatewayFilterFactory();
 	}
 
+	@Autowired
+	private RouteLocatorBuilder builder;
+
 	/**
 	 * 配置路由规则
 	 */
 	@Bean
-	public RouteLocator customerRouteLocator(RouteLocatorBuilder builder) {
-		return builder.routes()
-				.route(r -> r.path("/service/user/**")	//路由映射规则
-						.filters(f -> f.stripPrefix(2)	//由于我们这里加了两个前缀/client/personal/ 所以去掉两个路径
-							.addResponseHeader("X-Response-Default-Foo", "Default-Bar") 	//添加响应头
-								.filter(new ElapsedFilter())	//添加我们自定义的filter
+	public RouteLocator customerRouteLocator() {
+		RouteLocator routeLocator = builder.routes()
+				.route(r -> r.path(USER.getPath())	//路由映射规则
+						.filters(f -> f
+                                .filter(new SwaggerHeaderGatewayFilter().apply(new Object()))
+                                .stripPrefix(2)	//由于我们这里加了两个前缀/client/personal/ 所以去掉两个路径
+								.addResponseHeader("X-Response-Default-Foo", "Default-Bar") 	//添加响应头
+                                .filter(new SimpleLogsGatewayFilter())	//添加我们自定义的filter
 								.filter(rateLimitByIpGatewayFilter())
 						)
 						.uri("lb://service-client-personal")	//路由到service-client-personal服务
 						.order(0)	//顺序(好像某些情况下必须为0才行访问到)
-						.id("serviceRoute01")	//路由ID
+						.id(USER.getId())	//路由ID
 				)
-				.route(r -> r.path("/service/indent/**")
-						.filters(f -> f.stripPrefix(2)
-							.addResponseHeader("X-Response-Default-Foo", "Default-Bar"))
+				.route(r -> r.path(INDENT.getPath())
+						.filters(f -> f
+                                .filter(new SwaggerHeaderGatewayFilter().apply(new Object()))
+                                .stripPrefix(2)
+								.addResponseHeader("X-Response-Default-Foo", "Default-Bar")
+
+                        )
 						.uri("lb://service-client-order")
 						.order(0)
-						.id("serviceRoute02")
+						.id(INDENT.getId())
 				)
 				.build();
+		return routeLocator;
 	}
 
 	/**

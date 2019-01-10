@@ -3,4 +3,22 @@
 
 <mapper namespace="com.main.manager.SysPersonManager">
 
+    <sql id="base_column_list">
+       	id,
+        status,
+        enabled,
+        create_time AS createTime,
+        create_user_name AS createUserName,
+        update_time AS updateTime,
+        update_user_name AS updateUserName,
+        username,
+        password,
+        age,
+        sex
+    </sql>
+
+    <select id="findAll" resultType="com.main.entity.SysPerson">
+        SELECT <include refid="base_column_list" /> FROM sys_person
+    </select>
+
 </mapper>

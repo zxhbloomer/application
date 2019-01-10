@@ -148,4 +148,10 @@ public class MyBatisTkApplicationTest {
 		System.out.println();
 	}
 
+	@Test
+	public void testXmlSql(){
+		List<SysPerson> all = manager.findAll();
+		System.out.println();
+	}
+
 }

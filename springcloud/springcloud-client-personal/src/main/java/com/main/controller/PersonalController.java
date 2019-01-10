@@ -6,16 +6,18 @@ import com.jack.springcloud.bean.User;
 import com.jack.springcloud.common.util.SimpleUserUtil;
 import com.main.feign.OrderService;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import io.swagger.annotations.ApiImplicitParam;
+import io.swagger.annotations.ApiImplicitParams;
+import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.Random;
+import java.util.*;
 
 @Slf4j
 @RefreshScope   //刷新此类里面的@Value配置可通过 http://localhost:9301/actuator/bus-refresh 路径刷新
@@ -33,19 +35,37 @@ public class PersonalController {
 	OrderService orderService;
 
 
-	@RequestMapping("/receiverMessage")
-	public String receiverMessage(String message){
-		System.err.println("PersonalService : 接收到 [消费服务器] 消息 "+message+" 的处理消息");
-		return "Success";
+
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "message", value = "处理信息", paramType = "query", required = true, dataType = "string"),
+	})
+	@ApiOperation(value = "接收消费服务的处理信息", notes = "ConsumerService处理完成之后会调用此方法来反馈用户的购物处理结果", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, response = String.class)
+	@GetMapping("/receiverMessage")
+	public String receiverMessage(@RequestParam String message){
+		log.info("购物处理结果 = {}",message);
+		return success("ReceivedSuccess");
 	}
 
+
+	@ApiImplicitParams({
+			@ApiImplicitParam(name = "goodsName", value = "物品名称", paramType = "query", required = true, dataType = "string"),
+	})
+	@ApiOperation(value = "购买物品", notes = "用户的购物请求", produces = MediaType.APPLICATION_JSON_UTF8_VALUE, response = String.class)
 	@GetMapping("/buyGoods")
-	public String buyGoods(String goodsName, HttpServletRequest request){
-		System.err.println("Controller : 购买物品-" + goodsName);
+	public String buyGoods(@RequestParam String goodsName){
+		log.info("购买物品 : goodsName = {}",goodsName);
 		String result = orderService.receiverOrder(goodsName);
-		log.info("RequestUser : {}", SimpleUserUtil.getRequestUser());
-		return "{ Buy Result (One) = " + result + " }";
+		return success(result);
 	}
+
+	private String success(String data){
+		Map map = new HashMap<>();
+		map.put("code",200);
+		map.put("msg","PersonalService");
+		map.put("data",data);
+		return map.toString();
+	}
+
 
 	@GetMapping("/testMemory")
 	public String testMemory()throws Exception{
@@ -103,7 +123,6 @@ public class PersonalController {
 		user.setPeoples(new People[]{p3});
 		return user;
 	}
-
 
 	/**
 	 * 使用熔断器
