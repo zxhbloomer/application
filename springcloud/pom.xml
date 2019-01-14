@@ -18,7 +18,10 @@
         <module>springcloud-oauth2-authorization-server</module>
         <module>springcloud-oauth2-resource-server</module>
         <module>common-config</module>
-    </modules>
+		<module>springcloud-alibaba-nacos-discovery-provider</module>
+		<module>springcloud-alibaba-nacos-discovery-consumer</module>
+		<module>springcloud-alibaba-nacos-config</module>
+	</modules>
 
 	<packaging>pom</packaging>
 

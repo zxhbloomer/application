@@ -16,6 +16,7 @@ public final class FileUtils {
 	 * 复制文件-Stream
 	 */
 	public static boolean copyFile(String from,String to){
+
 		if(isNotEmpty(from) && isNotEmpty(to)){
 			try(
 					//使用缓存
@@ -136,12 +137,19 @@ public final class FileUtils {
 		return !isEmpty(str);
 	}
 
+
 	public static void main(String[] args){
 		File contentDir = new File("F:\\FileSave\\InnerSave\\textFile");
+		String[] names = new String[]{""};
+
 		for(File f : listAllFile(contentDir)){
-			if(getFileWithKeys(f.toString(),"",new String[]{})){
-				System.out.println(f);
-				copyFile(f.toString(),"F:\\Data\\"+f.getName());
+			for(String name :names){
+				if(getFileWithKeys(f.toString(),"",new String[]{name})){
+					System.out.println(f);
+					String fileName = "F:/Data/Group/" + name + "/";
+					new File(fileName).mkdirs();
+					copyFile(f.toString(),fileName+f.getName());
+				}
 			}
 		}
 

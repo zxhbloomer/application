@@ -13,44 +13,23 @@ import java.util.concurrent.Executors;
 
 public class MainApplication {
 
-	private static Integer SUM = 0 ;
-	private static final String ADDRESS = "http://localhost:9501/service/user/personal/buyGoods?goodsName=iPhone";
-
 	public static void main(String[] args) throws Exception{
-		ExecutorService exec = Executors.newFixedThreadPool(20);
-
-		for(int i=0;i<20;i++){
-			exec.execute(()->{
-				try {
-					doGet();
-				}catch (Exception e){
-					e.printStackTrace();
-				}
-			});
-		}
+		doGet("http://104.194.212.19/bbs/index.php?gid=303");
 	}
 
-	public static void doGet() throws Exception{
+	public static void doGet(String address) throws Exception{
 		//创建一个HttpClient对象
 		CloseableHttpClient httpClient = HttpClients.createDefault();
 		//创建一个Get对象
-		HttpGet get = new HttpGet(ADDRESS);
-		get.setHeader("Authorization","520becc9-fc9f-4d30-9de8-4324899dc100");
-
-		for(int i=0;i<1000000;i++){
-			//执行请求
-			CloseableHttpResponse response = httpClient.execute(get);
-			//取响应结果
-			int statusCode = response.getStatusLine().getStatusCode();
-			System.out.println("请求状态 : " + statusCode);
-			HttpEntity entity = response.getEntity();
-			String string = EntityUtils.toString(entity,"utf-8");
-			System.out.println(SUM + "返回内容 : " + string);
-			SUM ++;
-			//关闭连接
-			response.close();
-		}
-
+		HttpGet get = new HttpGet(address);
+		//执行请求
+		CloseableHttpResponse response = httpClient.execute(get);
+		System.out.println("请求状态 : " + response.getStatusLine().getStatusCode());
+		HttpEntity entity = response.getEntity();
+		String string = EntityUtils.toString(entity,"utf-8");
+		System.out.println("返回内容 : " + string);
+		//关闭连接
+		response.close();
 		httpClient.close();
 	}
 }
