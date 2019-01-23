@@ -17,4 +17,5 @@ public class SystemBaseEntity extends BaseEntity {
 	/** 更新者 **/
 	private String updateUserName;
 
+
 }

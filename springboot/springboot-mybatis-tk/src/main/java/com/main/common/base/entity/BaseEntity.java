@@ -20,6 +20,7 @@ public class BaseEntity implements Serializable{
     /** 更新时间 **/
     private Date updateTime;
 
+
     /** ID生成策略(雪花算法) */
     private static final SnowFlakeIdGenerator snowFlakeIdGenerator = new SnowFlakeIdGenerator(0,0);
 

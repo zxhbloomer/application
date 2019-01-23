@@ -3,6 +3,8 @@ server:
 spring:
   application:
     name: service-client-personal
+#  main:
+#    allow-bean-definition-overriding: true #SpringBoot 2.0.x 版本升级到 2.1.x版本的时候需要和Swagger2会报错,需要加上此配置(放在远程配置无效!)
 feign:
 #  httpclient:
 #    enabled: false #使用HttpClient替代URLConnection

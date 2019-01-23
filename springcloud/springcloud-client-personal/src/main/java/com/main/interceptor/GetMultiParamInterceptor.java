@@ -29,7 +29,7 @@ public class GetMultiParamInterceptor implements RequestInterceptor {
         if (template.method().equals("GET") && template.body() != null) {
             try {
                 JsonNode jsonNode = objectMapper.readTree(template.body());
-                template.body(null);
+                template.body();
 
                 Map<String, Collection<String>> queries = new HashMap<>();
                 buildQuery(jsonNode, "", queries);

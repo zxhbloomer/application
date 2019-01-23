@@ -23,7 +23,7 @@ import java.util.Random;
  * Token全局过滤器
  */
 @Slf4j
-//@Component
+@Component
 public class AuthGatewayFilter implements GlobalFilter {
 
 	public static final String HEADER_AUTH = "Authorization";

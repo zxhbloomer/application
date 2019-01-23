@@ -15,6 +15,7 @@
         <module>jdk-news</module>
         <module>java-demos</module>
         <module>jvm</module>
+        <module>mybatis</module>
     </modules>
 
     <dependencies>

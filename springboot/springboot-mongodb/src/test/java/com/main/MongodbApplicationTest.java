@@ -4,6 +4,7 @@ import com.main.entity.Person;
 import com.main.service.MongodbService;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = MongodbApplication.class)
 @Slf4j
+@Ignore
 public class MongodbApplicationTest {
 
 	@Autowired

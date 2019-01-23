@@ -3,3 +3,5 @@ server:
 spring:
   application:
     name: service-client-order
+#  main:
+#    allow-bean-definition-overriding: true

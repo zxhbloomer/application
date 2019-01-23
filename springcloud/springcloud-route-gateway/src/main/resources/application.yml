@@ -52,3 +52,5 @@ spring:
                 key-resolver: "#{@remoteAddressKeyResolver}"   #SpEl表达式,表示Bean名称详细参见RemoteAddressKeyResolver
                 redis-rate-limiter.replenishRate: 1 #令牌桶填充平均速率，1秒/1个。
                 redis-rate-limiter.burstCapacity: 5 #令牌桶上限
+#  main:
+#    allow-bean-definition-overriding: true
